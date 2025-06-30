@@ -2,36 +2,59 @@ import BackButton from "../components/BackButton";
 import CustomiseButton from "../components/CustomiseButton";
 import { useState } from "react";
 import "./css/FlashcardPage.css";
+import flashcards from "../data/data";
 
 function FlashcardPage() {
-    const data = [{word: "dominus", answer: "master"}, {word: "faber", answer: "craftsman"}];
+  const data = flashcards;
+  const [list, setList] = useState(data);
+  const [showAnswer, setShowAnswer] = useState(false);
+  const [random, setRandom] = useState(Math.floor(Math.random() * list.length));
+  function handleRandom() {
+    setRandom(Math.floor(Math.random() * list.length));
+  }
+  function handleList() {
+    setList((prevList) => prevList.filter((element, i) => i !== random));
+  }
+  function handleAnswer() {
+    setShowAnswer((prevAnswer) => !prevAnswer);
+  }
+  function handleShuffle() {
+    setList(data);
+    setShowAnswer(false);
+    setRandom(Math.floor(Math.random() * data.length));
+  }
+  function handleNext() {
+    setList((prevList) => {
+        const newList = prevList.filter((element, index) => index !== random);
+        setRandom(Math.floor(Math.random() * newList.length));
+        if (setShowAnswer) setShowAnswer(false);
+        return newList;
+    })
+  }
 
-    const [list, setList] = useState(data);
+  return (
+    <div className="flexbox">
+      {list.length > 0 ? (
+        <button id="flashcard" onClick={handleAnswer}>
+          {showAnswer ? list[random].answer : list[random].word}
+        </button>
+      ) : (
+        <button id="done" onClick={handleShuffle}>
+          All words revised. Reshuffle?
+        </button>
+      )}  
 
-    const [showAnswer, setShowAnswer] = useState(false);
-
-    const [random, setRandom] = useState(0);
-    
-    function handleRandom() {
-        setRandom(Math.floor(Math.random() * data.length));
-    }
-
-    function handleAnswer() {
-        setShowAnswer((prevValue) => {
-            return (!prevValue)});
-    }
- 
-    return (
-        <div className="flexbox">
-            <h1>Flashcards</h1>
-            <button id="flashcard" onClick={handleAnswer}>{showAnswer ? data[random].answer : data[random].word}</button>
-            <div className="flexbox2">
-                <button onClick={handleRandom}>Next</button>
-                <CustomiseButton />
-            </div>
-            <BackButton />
-        </div>
-    )
+      <div className="flexbox2">
+        <button
+          onClick={handleNext}
+        >
+          Next
+        </button>
+        <CustomiseButton />
+      </div>
+      <BackButton />
+    </div>
+  );
 }
 
 export default FlashcardPage;

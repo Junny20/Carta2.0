@@ -5,7 +5,7 @@
     align-items: center;
 }
 
-#flashcard {
+#flashcard, #done {
     width: 60vw;
     height: 60vh;
     font-size: 4rem;
