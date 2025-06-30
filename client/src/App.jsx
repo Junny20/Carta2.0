@@ -6,6 +6,7 @@ import LandingPage from "./pages/LandingPage";
 import FlashcardPage from "./pages/FlashcardPage";
 import SignupPage from "./pages/SignupPage";
 import CustomisePage from "./pages/CustomisePage";
+import FlashcardTestPage from "./pages/FlashcardTestPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/flashcards" element={<FlashcardPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/customise" element={<CustomisePage />} />
+        <Route path="/flashcards/test" element={<FlashcardTestPage />}/>
       </Routes>
     </Router>
   );

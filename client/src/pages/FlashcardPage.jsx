@@ -1,20 +1,14 @@
-import BackButton from "../components/BackButton";
-import CustomiseButton from "../components/CustomiseButton";
 import { useState } from "react";
 import "./css/FlashcardPage.css";
 import flashcards from "../data/data";
+import BackButton from "../components/BackButton";
+import CustomiseButton from "../components/CustomiseButton";
 
 function FlashcardPage() {
   const data = flashcards;
   const [list, setList] = useState(data);
   const [showAnswer, setShowAnswer] = useState(false);
   const [random, setRandom] = useState(Math.floor(Math.random() * list.length));
-  function handleRandom() {
-    setRandom(Math.floor(Math.random() * list.length));
-  }
-  function handleList() {
-    setList((prevList) => prevList.filter((element, i) => i !== random));
-  }
   function handleAnswer() {
     setShowAnswer((prevAnswer) => !prevAnswer);
   }
