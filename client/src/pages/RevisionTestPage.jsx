@@ -7,10 +7,10 @@ import CustomiseButton from "../components/CustomiseButton";
 import Button from "../components/GeneralButton";
 
 
-function FlashcardTestPage() {
-  const data = flashcards;
+function RevisionTestPage() {
+  const revisionData = revision;
 
-  const [list, setList] = useState(data);
+  const [list, setList] = useState(revisionData);
   const [isAnswered, setIsAnswered] = useState(false);
   const [random, setRandom] = useState(Math.floor(Math.random() * list.length));
   const [value, setValue] = useState("");
@@ -57,11 +57,6 @@ function FlashcardTestPage() {
     setValue("");
   }
 
-  function handleRevision() {
-    revision.push(list[random]);
-    handleNext();
-  }
-
   return (
     <div className="flexbox">
       {list.length > 0 ? (
@@ -81,7 +76,6 @@ function FlashcardTestPage() {
       {isAnswered ? (
         <div className="flexbox2">
           <button onClick={handleNext}>Next</button>
-          <button onClick={handleRevision}>Add to revision</button>
         </div>
       ) : (
         list.length > 0 && (
@@ -102,10 +96,9 @@ function FlashcardTestPage() {
           </>
         )
       )}
-      <Button buttonText='Revise mode' path='/revision/test'/>
       <BackButton />
     </div>
   );
 }
 
-export default FlashcardTestPage;
+export default RevisionTestPage;

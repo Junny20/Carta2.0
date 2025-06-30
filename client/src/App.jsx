@@ -7,6 +7,7 @@ import FlashcardPage from "./pages/FlashcardPage";
 import SignupPage from "./pages/SignupPage";
 import CustomisePage from "./pages/CustomisePage";
 import FlashcardTestPage from "./pages/FlashcardTestPage";
+import RevisionTestPage from "./pages/RevisionTestPage"
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/customise" element={<CustomisePage />} />
         <Route path="/flashcards/test" element={<FlashcardTestPage />}/>
+        <Route path="/revision/test" element={<RevisionTestPage />} />
       </Routes>
     </Router>
   );
