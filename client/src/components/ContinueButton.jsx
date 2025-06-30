@@ -4,7 +4,7 @@ function ContinueButton() {
   const navigate = useNavigate();
 
   const handleGuestContinue = () => {
-    navigate("/flashcards"); // go to main flashcard page
+    navigate("/flashcards"); 
   };
 
   return <button onClick={handleGuestContinue}>Continue as Guest</button>;
