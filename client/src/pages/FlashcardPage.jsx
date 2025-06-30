@@ -1,6 +1,11 @@
+import BackButton from "../components/BackButton";
+
 function FlashcardPage() {
     return (
-        <h1>Flashcards</h1>
+        <div>
+            <h1>Flashcards</h1>
+            <BackButton />
+        </div>
     )
 }
 
