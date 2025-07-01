@@ -4,8 +4,8 @@ body {
 
 .landingPage {
     display: flex;
-    margin-top: 6vh;
-    height: 90vh;
+    margin-top: 8vh;
+    height: 80vh;
     width: 100vw;
     flex-direction: column;
     justify-content: center;
