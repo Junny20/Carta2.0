@@ -13,12 +13,13 @@
     width: 60vw;
     height: 60vh;
     font-size: 4rem;
+    transition: color 0.6s ease;
     transition: background-color 0.3s ease-in;
-    transition: color 0.2s ease;
 }
 
 #flashcard.active {
     background-color: #2f4705;
+    transition: background-color 0.3s ease-in;
     color: rgb(238, 255, 0);
 }
 

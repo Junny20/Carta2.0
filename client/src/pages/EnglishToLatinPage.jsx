@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./css/FlashcardPage.css";
 import flashcards from "../data/words";
-import BackButton from "../components/BackButton";
+import Button from "../components/GeneralButton";
 import CustomiseButton from "../components/CustomiseButton";
 
 function EnglishToLatinPage() {
@@ -9,19 +9,25 @@ function EnglishToLatinPage() {
   const [list, setList] = useState(data);
   const [showAnswer, setShowAnswer] = useState(false);
   const [random, setRandom] = useState(Math.floor(Math.random() * list.length));
+  const [isActive, setIsActive] = useState(false);
+
   function handleAnswer() {
     setShowAnswer((prevAnswer) => !prevAnswer);
+    setIsActive(prevValue => !prevValue);
   }
+
   function handleShuffle() {
     setList(data);
     setShowAnswer(false);
     setRandom(Math.floor(Math.random() * data.length));
   }
+
   function handleNext() {
     setList((prevList) => {
         const newList = prevList.filter((element, index) => index !== random);
         setRandom(Math.floor(Math.random() * newList.length));
         if (setShowAnswer) setShowAnswer(false);
+        if (isActive) setIsActive(false);
         return newList;
     })
   }
@@ -29,7 +35,7 @@ function EnglishToLatinPage() {
   return (
     <div className="flexbox">
       {list.length > 0 ? (
-        <button id="flashcard" onClick={handleAnswer}>
+        <button id="flashcard" className={isActive ? "active" : undefined} onClick={handleAnswer}>
           {showAnswer ? list[random].word : list[random].answer}
         </button>
       ) : (
@@ -38,7 +44,7 @@ function EnglishToLatinPage() {
         </button>
       )}  
 
-      <div className="flexbox2">
+      <div className="flexbox4">
         <button
           onClick={handleNext}
         >
@@ -46,7 +52,7 @@ function EnglishToLatinPage() {
         </button>
         <CustomiseButton />
       </div>
-      <BackButton />
+      <Button buttonText="Go back" path="/flashcards"/>
     </div>
   );
 }

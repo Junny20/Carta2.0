@@ -18,7 +18,6 @@ function FlashcardPage(props) {
   function handleAnswer() {
     setShowAnswer(prevAnswer => !prevAnswer);
     setIsActive(prevValue => !prevValue);
-    console.log("Active clicked!");
   }
   function handleShuffle() {
     setList(data);
@@ -29,7 +28,8 @@ function FlashcardPage(props) {
     setList((prevList) => {
         const newList = prevList.filter((element, index) => index !== random);
         setRandom(Math.floor(Math.random() * newList.length));
-        if (setShowAnswer) setShowAnswer(false);
+        if (showAnswer) setShowAnswer(false);
+        if (isActive) setIsActive(false);
         return newList;
     })
   }
