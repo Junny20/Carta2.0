@@ -1,0 +1,18 @@
+.customisePage {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.customisePage h1 {
+    color: white;
+    margin-bottom: 50px;
+}
+
+.customisePage button {
+    background-color: rgb(21, 21, 21);
+    color: white;
+    width: 300px;
+}

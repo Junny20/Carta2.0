@@ -1,12 +1,12 @@
 import "./css/OptionsPage.css"
-import Button from "../components/GeneralButton"
+import BackButton from "../components/BackButton";
 
 function OptionsPage() {
 
     return (
         <div className="flexbox">
-            <Button buttonText='Learn' path='/flashcards'/>
-            <Button buttonText='Test yourself' path='/flashcards/test'/>
+            <h1>This feature is still in development. Sorry...</h1>
+            <BackButton />
         </div>
     )
 }

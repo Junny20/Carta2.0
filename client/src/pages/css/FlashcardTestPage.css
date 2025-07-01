@@ -1,0 +1,36 @@
+.flashcardTestPage {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#flashcard, #done {
+    width: 50vw;
+    height: 50vh;
+    font-size: 4rem;
+}
+
+.flexbox4 {
+    flex-direction: row;
+    gap: 5px;
+}
+
+.flashcardTestPage button {
+    background-color: rgb(21, 21, 21);
+    color: white;
+}
+
+#answer {
+    margin: 3px;
+    width: 49.5vw;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+}
+
+#answer:focus {
+    outline: none;
+}

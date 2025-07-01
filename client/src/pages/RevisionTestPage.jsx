@@ -1,8 +1,6 @@
 import { useState } from "react";
 import "./css/FlashcardPage.css";
-import flashcards from "../data/words";
 import revision from "../data/revision";
-import BackButton from "../components/BackButton";
 import CustomiseButton from "../components/CustomiseButton";
 import Button from "../components/GeneralButton";
 
@@ -68,8 +66,8 @@ function RevisionTestPage() {
             : list[random].word}
         </button>
       ) : (
-        <button id="done" onClick={handleShuffle}>
-          All words revised. Reshuffle?
+        <button id="done" onClick={handleShuffle} style={{fontSize: "2rem"}}>
+          It seems like you haven't added any words...
         </button>
       )}
 
@@ -96,7 +94,7 @@ function RevisionTestPage() {
           </>
         )
       )}
-      <BackButton />
+      <Button buttonText='Go back' path='/flashcards'/>
     </div>
   );
 }

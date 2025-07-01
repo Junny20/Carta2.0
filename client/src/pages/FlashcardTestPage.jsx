@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./css/FlashcardPage.css";
+import "./css/FlashcardTestPage.css";
 import revision from "../data/revision";
 import BackButton from "../components/BackButton";
 import CustomiseButton from "../components/CustomiseButton";
@@ -62,7 +62,7 @@ function FlashcardTestPage(props) {
   }
 
   return (
-    <div className="flexbox">
+    <div className="flashcardTestPage">
       {list.length > 0 ? (
         <button id="flashcard">
           {isAnswered
@@ -78,7 +78,7 @@ function FlashcardTestPage(props) {
       )}
 
       {isAnswered ? (
-        <div className="flexbox2">
+        <div className="flexbox4">
           <button onClick={handleNext}>Next</button>
           <button onClick={handleRevision}>Add to revision</button>
         </div>
@@ -93,7 +93,7 @@ function FlashcardTestPage(props) {
               placeholder="Answer..."
               value={value}
             />
-            <div className="flexbox2">
+            <div className="flexbox4">
               <button onClick={handleSubmit}>Submit</button>
               <button onClick={handleRandom}>Skip</button>
               <CustomiseButton />
@@ -101,7 +101,7 @@ function FlashcardTestPage(props) {
           </>
         )
       )}
-      <BackButton />
+      <Button buttonText="Go back" path='/flashcards'/>
     </div>
   );
 }

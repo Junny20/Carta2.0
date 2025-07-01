@@ -7,7 +7,7 @@ function ContinueButton() {
     navigate("/flashcards"); 
   };
 
-  return <button onClick={handleGuestContinue}>Continue as Guest</button>;
+  return <button onClick={handleGuestContinue}>Continue</button>;
 }
 
 export default ContinueButton;

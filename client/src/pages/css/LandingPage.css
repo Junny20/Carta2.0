@@ -1,0 +1,38 @@
+.landingPage {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #facc15;
+    background-color: rebeccapurple;
+}
+
+.flexbox2 {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.landingPage button {
+    background-color: #facc15;
+    color: rebeccapurple;
+    height: 70px;
+    width: 300px;
+    font-size: 1rem;
+    transition: border-color 0.5s ease-in;
+}
+
+.landingPage button:hover {
+    border-color: red;
+}
+
+h1 {
+    margin: 0;
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+

@@ -46,7 +46,7 @@ function FlashcardPage(props) {
         </button>
       )}  
 
-      <div className="flexbox2">
+      <div className="flexbox3">
         <button
           onClick={handleNext}
         >
