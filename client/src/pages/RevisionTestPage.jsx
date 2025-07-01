@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./css/FlashcardPage.css";
-import flashcards from "../data/data";
+import flashcards from "../data/words";
 import revision from "../data/revision";
 import BackButton from "../components/BackButton";
 import CustomiseButton from "../components/CustomiseButton";

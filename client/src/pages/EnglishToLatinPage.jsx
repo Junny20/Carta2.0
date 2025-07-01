@@ -1,22 +1,14 @@
 import { useState } from "react";
-import { useLocation } from "react-router";
 import "./css/FlashcardPage.css";
+import flashcards from "../data/words";
 import BackButton from "../components/BackButton";
 import CustomiseButton from "../components/CustomiseButton";
-import Button from "../components/GeneralButton";
 
-function FlashcardPage(props) {
-  const location = useLocation();
-  console.log(location);
-  const path = location.pathname;
-  console.log(path);
-  const data = props.flashcards;
-
+function EnglishToLatinPage() {
+  const data = flashcards;
   const [list, setList] = useState(data);
   const [showAnswer, setShowAnswer] = useState(false);
   const [random, setRandom] = useState(Math.floor(Math.random() * list.length));
-  const [isTest, setIsTest] = useState(false);
-
   function handleAnswer() {
     setShowAnswer((prevAnswer) => !prevAnswer);
   }
@@ -38,7 +30,7 @@ function FlashcardPage(props) {
     <div className="flexbox">
       {list.length > 0 ? (
         <button id="flashcard" onClick={handleAnswer}>
-          {showAnswer ? list[random].answer : list[random].word}
+          {showAnswer ? list[random].word : list[random].answer}
         </button>
       ) : (
         <button id="done" onClick={handleShuffle}>
@@ -53,11 +45,10 @@ function FlashcardPage(props) {
           Next
         </button>
         <CustomiseButton />
-        <Button buttonText="Test yourself" path = {`${path}/test`} />
       </div>
       <BackButton />
     </div>
   );
 }
 
-export default FlashcardPage;
+export default EnglishToLatinPage;

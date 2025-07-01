@@ -1,14 +1,13 @@
 import { useState } from "react";
 import "./css/FlashcardPage.css";
-import flashcards from "../data/data";
 import revision from "../data/revision";
 import BackButton from "../components/BackButton";
 import CustomiseButton from "../components/CustomiseButton";
 import Button from "../components/GeneralButton";
 
 
-function FlashcardTestPage() {
-  const data = flashcards;
+function FlashcardTestPage(props) {
+  const data = props.flashcards;
 
   const [list, setList] = useState(data);
   const [isAnswered, setIsAnswered] = useState(false);
@@ -102,7 +101,6 @@ function FlashcardTestPage() {
           </>
         )
       )}
-      <Button buttonText='Revise mode' path='/revision/test'/>
       <BackButton />
     </div>
   );

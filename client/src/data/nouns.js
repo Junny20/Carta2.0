@@ -1,0 +1,25 @@
+const nouns = [
+  { word: "quies", answer: "rest" },
+  { word: "noctis", answer: "night" },
+  { word: "curriculo", answer: "chariot / course (figurative for passage of time)" },
+  { word: "somnum", answer: "sleep" },
+  { word: "femina", answer: "woman" },
+  { word: "vitam", answer: "life" },
+  { word: "colo", answer: "distaff / spinning tool" },
+  { word: "Minerva", answer: "Minerva (goddess of wisdom/crafts)" },
+  { word: "cinerem", answer: "ashes" },
+  { word: "ignes", answer: "fires" },
+  { word: "noctem", answer: "night" },
+  { word: "operi", answer: "work" },
+  { word: "famulas", answer: "maidservants" },
+  { word: "lumina", answer: "lights" },
+  { word: "penso", answer: "spinning / wool work" },
+  { word: "cubile", answer: "bed" },
+  { word: "coniugis", answer: "spouse" },
+  { word: "natos", answer: "children" },
+  { word: "Ignipotens", answer: "Fire-powerful one (Vulcan)" },
+  { word: "stratis", answer: "bedding" },
+  { word: "opera", answer: "work / task" },
+]
+
+export default nouns;
