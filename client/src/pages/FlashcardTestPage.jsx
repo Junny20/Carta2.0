@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./css/FlashcardTestPage.css";
 import revision from "../data/revision";
-import BackButton from "../components/BackButton";
 import CustomiseButton from "../components/CustomiseButton";
 import Button from "../components/GeneralButton";
 
@@ -18,6 +17,7 @@ function FlashcardTestPage(props) {
   function handleRandom() {
     setIsAnswered(false);
     setIsCorrect(false);
+    setValue("");
     setRandom(Math.floor(Math.random() * list.length));
   }
 
@@ -49,9 +49,6 @@ function FlashcardTestPage(props) {
     const yourAnswer = value;
     if (correctAnswer.toLowerCase() === yourAnswer.toLowerCase()) {
       setIsCorrect(true);
-      console.log("Correct");
-    } else {
-      console.log("Incorrect: ", list[random].answer);
     }
     setValue("");
   }
@@ -64,7 +61,7 @@ function FlashcardTestPage(props) {
   return (
     <div className="flashcardTestPage">
       {list.length > 0 ? (
-        <button id="flashcard">
+        <button id="flashcardTest">
           {isAnswered
             ? isCorrect
               ? `Correct! \n${list[random].answer}`

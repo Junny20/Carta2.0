@@ -1,9 +1,18 @@
 .customisePage {
     display: flex;
     flex-direction: column;
+    background-color: #d97706;
+    width: 100vw;
     height: 100vh;
     justify-content: center;
     align-items: center;
+}
+
+.customisePageGrid {
+    display: grid;
+    width: 600px;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 }
 
 .customisePage h1 {
@@ -12,7 +21,18 @@
 }
 
 .customisePage button {
-    background-color: rgb(21, 21, 21);
+    background-color: #f59e0b;
     color: white;
     width: 300px;
+    margin: 5px;
+    border: #f59e0b solid 4px;
+    transition: border-color 0.5s ease-in;
+}
+
+.customisePage button:hover {
+    border-color: #d97706;
+}
+
+#back {
+    margin-top: 5px;
 }

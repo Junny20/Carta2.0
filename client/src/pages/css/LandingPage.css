@@ -1,6 +1,7 @@
 .landingPage {
     display: flex;
     height: 100vh;
+    width: 100vw;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -11,7 +12,7 @@
 .flexbox2 {
     display: flex;
     flex-direction: column;
-    gap: 1px;
+    gap: 2px;
 }
 
 .landingPage button {
@@ -20,11 +21,12 @@
     height: 70px;
     width: 300px;
     font-size: 1rem;
+    border: 5px solid #facc15;
     transition: border-color 0.5s ease-in;
 }
 
 .landingPage button:hover {
-    border-color: red;
+    border-color: rebeccapurple;
 }
 
 h1 {

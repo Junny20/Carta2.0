@@ -1,4 +1,25 @@
-.flexbox {
+.optionsPage {
+    background-color: #FF5C00;
+    height: 100vh;
+    width: 100vw;
     display: flex;
     flex-direction: column;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.optionsPage button {
+    background-color: #facc15;
+    color: #FF5C00;
+    width: 400px;
+    height: 50px;
+    transition: border-color 0.5s ease-in;
+    border: #facc15 4px solid;
+    font-weight: 600;
+}
+
+.optionsPage button:hover {
+    border-color: #FF5C00;
 }

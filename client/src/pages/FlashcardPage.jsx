@@ -7,18 +7,18 @@ import Button from "../components/GeneralButton";
 
 function FlashcardPage(props) {
   const location = useLocation();
-  console.log(location);
   const path = location.pathname;
-  console.log(path);
   const data = props.flashcards;
 
   const [list, setList] = useState(data);
   const [showAnswer, setShowAnswer] = useState(false);
   const [random, setRandom] = useState(Math.floor(Math.random() * list.length));
-  const [isTest, setIsTest] = useState(false);
+  const [isActive, setIsActive] = useState(false);
 
   function handleAnswer() {
-    setShowAnswer((prevAnswer) => !prevAnswer);
+    setShowAnswer(prevAnswer => !prevAnswer);
+    setIsActive(prevValue => !prevValue);
+    console.log("Active clicked!");
   }
   function handleShuffle() {
     setList(data);
@@ -36,8 +36,9 @@ function FlashcardPage(props) {
 
   return (
     <div className="flexbox">
+      <p className="hint fade">Click on card to reveal translation</p>
       {list.length > 0 ? (
-        <button id="flashcard" onClick={handleAnswer}>
+        <button id="flashcard" className={isActive ? "active" : undefined} onClick={handleAnswer}>
           {showAnswer ? list[random].answer : list[random].word}
         </button>
       ) : (

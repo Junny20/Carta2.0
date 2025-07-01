@@ -8,8 +8,9 @@ import SignupPage from "./pages/SignupPage";
 import CustomisePage from "./pages/CustomisePage";
 import FlashcardTestPage from "./pages/FlashcardTestPage";
 import RevisionTestPage from "./pages/RevisionTestPage";
-import OptionsPage from "./pages/OptionsPage";
 import EnglishToLatinPage from "./pages/EnglishToLatinPage";
+import OptionsPage from "./pages/OptionsPage.jsx";
+import LineOptionsPage from "./pages/LineOptionsPage.jsx";
 import flashcards from "./data/words.js";
 import nouns from "./data/nouns.js";
 import verbs from "./data/verbs.js";
@@ -18,7 +19,6 @@ import adjectives from "./data/adjectives.js";
 function App() {
   const router = createBrowserRouter([
     { path: "/", element: <LandingPage /> },
-    { path: "/options", element: <OptionsPage /> },
     { path: "/flashcards", element: <FlashcardPage flashcards = {flashcards}/> },
     { path: "/flashcards/verbs", element: <FlashcardPage flashcards = {verbs}/> },
     { path: "/flashcards/nouns", element: <FlashcardPage flashcards = {nouns}/> },
@@ -31,6 +31,8 @@ function App() {
     { path: "/flashcards/adjectives/test", element: <FlashcardTestPage flashcards = {adjectives}/> },
     { path: "/revision/test", element: <RevisionTestPage /> },
     { path: "/english", element: <EnglishToLatinPage /> },
+    { path: "/options", element: <OptionsPage /> },
+    { path: "/lineoptions", element: <LineOptionsPage /> },
   ]);
 
   return (

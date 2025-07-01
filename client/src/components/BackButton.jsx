@@ -8,7 +8,7 @@ function BackButton() {
   }
 
   return (
-    <button onClick={handleGoBack}>Go back</button>
+    <button onClick={handleGoBack}>Back to menu</button>
   )
 }
   
