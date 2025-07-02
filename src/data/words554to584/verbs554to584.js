@@ -1,0 +1,27 @@
+const verbs = [
+  { word: "volo, volare, volavi, volatum", answer: "to fly" },
+  { word: "volgo, volgare, volgavi, volgatum", answer: "to spread, make known" },
+  { word: "duplico, duplicare, duplicavi, duplicatum", answer: "to double, redouble" },
+  { word: "appareo, apparere, apparui, apparitum", answer: "to appear" },
+  { word: "complexor, complexari, complexatus sum", answer: "to embrace" },
+  { word: "haereo, haerere, haesi, haesum", answer: "to cling, stick" },
+  { word: "refero, referre, rettuli, relatum", answer: "to bring back, recall" },
+  { word: "stravo, stravare, stravi, stratum", answer: "to lay low, strike down" },
+  { word: "incendo, incendere, incendi, incensum", answer: "to burn, set on fire" },
+  { word: "abstulo, abstulere, abstuli, ablatum", answer: "to take away, remove" },
+  { word: "exuo, exuere, exui, exutum", answer: "to strip, take off" },
+  { word: "divello, divellere, divelli, divulsum", answer: "to tear apart, separate" },
+  { word: "insulto, insultare, insultavi, insultatum", answer: "to leap upon, trample on" },
+  { word: "viduo, viduare, viduavi, viduatum", answer: "to deprive, bereave" },
+  { word: "miseresco, miserescere, -, -", answer: "to feel pity, have compassion" },
+  { word: "reservo, reservare, reservavi, reservatum", answer: "to keep back, reserve" },
+  { word: "patior, pati, passus sum", answer: "to suffer, endure" },
+  { word: "duro, durare, duravi, duratum", answer: "to harden, endure" },
+  { word: "minor, minari, minatus sum", answer: "to threaten" },
+  { word: "liceo, licere, licuit", answer: "to be permitted, be allowed" },
+  { word: "abrumpo, abrumpere, abrupi, abruptum", answer: "to break off, tear away" },
+  { word: "volnero, volnerare, volneravi, volneratum", answer: "to wound" },
+  { word: "fundo, fundere, fudi, fusum", answer: "to pour out, utter" },
+];
+
+export default verbs;

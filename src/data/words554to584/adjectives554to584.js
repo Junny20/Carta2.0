@@ -1,0 +1,30 @@
+const adjectives = [
+  { word: "ocius", answer: "more swiftly, quickly" },
+  { word: "Tyrrhenus, Tyrrhena, Tyrrhenum", answer: "Tyrrhenian, Etruscan" },
+  { word: "duplicatus, duplicata, duplicatum", answer: "doubled, redoubled" },
+  { word: "propius, propria, proprium", answer: "nearer, closer" },
+  { word: "maior, maius", answer: "greater, larger" },
+  { word: "inexpletus, inexpleta, inexpletum", answer: "unsatisfied, insatiable" },
+  { word: "praeteritus, praeterita, praeteritum", answer: "past, bygone" },
+  { word: "primus, prima, primum", answer: "first, earliest" },
+  { word: "victor, victoris", answer: "victorious" },
+  { word: "horrendus, horrenda, horrendum", answer: "dreadful, horrible" },
+  { word: "ternus, terna, ternum", answer: "three each, triple" },
+  { word: "dulcis, dulce", answer: "sweet, dear" },
+  { word: "finitimus, finitima, finitimum", answer: "neighboring, bordering" },
+  { word: "saevus, saeva, saevum", answer: "fierce, cruel" },
+  { word: "viduatus, viduata, viduatum", answer: "bereft, deprived" },
+  { word: "patrius, patria, patrium", answer: "of a father, ancestral" },
+  { word: "incolumis, incolume", answer: "safe, unharmed" },
+  { word: "infandus, infanda, infandum", answer: "unspeakable, accursed" },
+  { word: "crudele, crudelis", answer: "cruel" },
+  { word: "ambiguus, ambigua, ambiguum", answer: "uncertain, doubtful" },
+  { word: "incertus, incerta, incertum", answer: "uncertain, unsure" },
+  { word: "carus, cara, carum", answer: "dear, beloved" },
+  { word: "serus, sera, serum", answer: "late, too late" },
+  { word: "solus, sola, solum", answer: "alone, only" },
+  { word: "supremus, suprema, supremum", answer: "last, final" },
+  { word: "conlapsus, conlapsa, conlapsum", answer: "collapsed, fainted" }
+];
+
+export default adjectives;

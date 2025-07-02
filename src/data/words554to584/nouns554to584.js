@@ -1,0 +1,32 @@
+const nouns = [
+  { word: "limen, liminis", answer: "threshold, entrance" },
+  { word: "litora, litorum (n. pl.)", answer: "shores, coasts" },
+  { word: "votum, voti (n.)", answer: "vow, prayer" },
+  { word: "Martis imago, Martis imaginis (f.)", answer: "image of Mars, warlike appearance" },
+  { word: "scutum, scuti (n.)", answer: "shield" },
+  { word: "lacrima, lacrimae (f.)", answer: "tear" },
+  { word: "acies, aciei (f.)", answer: "battle line" },
+  { word: "Praeneste, Praenestis (f.)", answer: "Praeneste (town in Latium)" },
+  { word: "acervus, acervi (m.)", answer: "heap, pile" },
+  { word: "Erulus, Eruli (m.)", answer: "Erulus (a king slain by Evander)" },
+  { word: "Feronia, Feroniae (f.)", answer: "Feronia (goddess of wild places)" },
+  { word: "Leto, Letonis (f.)", answer: "Letum (death, personified)" },
+  { word: "amplexus, amplexus (m.)", answer: "embrace" },
+  { word: "Mezentius, Mezenti(i) (m.)", answer: "Mezentius (Etruscan king)" },
+  { word: "funus, funeris (n.)", answer: "funeral, death" },
+  { word: "superi, superorum (m. pl.)", answer: "the gods above" },
+  { word: "rector, rectoris (m.)", answer: "ruler, director" },
+  { word: "prex, precis (f.)", answer: "prayer, entreaty" },
+  { word: "numen, numinis (n.)", answer: "divine will, deity" },
+  { word: "casus, casus (m.)", answer: "misfortune, event" },
+  { word: "cura, curae (f.)", answer: "care, anxiety" },
+  { word: "spes, spei (f.)", answer: "hope" },
+  { word: "voluptas, voluptatis (f.)", answer: "delight, pleasure" },
+  { word: "digressus, digressus (m.)", answer: "departure" },
+  { word: "auris, auris (f.)", answer: "ear" },
+  { word: "genitor, genitoris (m.)", answer: "father" },
+  { word: "famulus, famuli (m.)", answer: "servant" },
+  { word: "tectum, tecti (n.)", answer: "roof, house" }
+];
+
+export default nouns;

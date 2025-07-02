@@ -1,0 +1,33 @@
+const nouns = [
+  { word: "ora, orae (f.)", answer: "face, expression" },
+  { word: "Anchisiades, Anchisiadae (m.)", answer: "son of Anchises (Aeneas)" },
+  { word: "Cytherea, Cythereae (f.)", answer: "the Cytherean (Venus)" },
+  { word: "aether, aetheris (m.)", answer: "upper air, sky" },
+  { word: "fulgor, fulgoris (m.)", answer: "brightness, flash" },
+  { word: "tuba, tubae (f.)", answer: "trumpet" },
+  { word: "clangor, clangoris (m.)", answer: "blare, clang" },
+  { word: "fragor, fragoris (m.)", answer: "crash, thunderclap" },
+  { word: "nubis, nubis (f.)", answer: "cloud" },
+  { word: "regio, regionis (f.)", answer: "region, area" },
+  { word: "sudum, sudi (n.)", answer: "clear sky" },
+  { word: "heros, herois (m.)", answer: "hero" },
+  { word: "dīva, dīvae (f.)", answer: "goddess" },
+  { word: "promissa, promissorum (n. pl.)", answer: "promises" },
+  { word: "parentis, parentis (m./f.)", answer: "parent" },
+  { word: "casus, casus (m.)", answer: "event, misfortune" },
+  { word: "portentum, portenti (n.)", answer: "omen, portent" },
+  { word: "Olympus, Olympi (m.)", answer: "Olympus (home of the gods)" },
+  { word: "creatrix, creatricis (f.)", answer: "creator (female), creatress" },
+  { word: "Volcania arma, Volcaniorum armorum (n. pl.)", answer: "arms/weapons of Vulcan" },
+  { word: "auxilium, auxilii (n.)", answer: "help, aid" },
+  { word: "Laurentes, Laurentium (m. pl.)", answer: "Laurentians (people of Laurentum)" },
+  { word: "poena, poenae (f.)", answer: "punishment, penalty" },
+  { word: "scutum, scuti (n.)", answer: "shield" },
+  { word: "galea, galeae (f.)", answer: "helmet" },
+  { word: "corpus, corporis (n.)", answer: "body" },
+  { word: "Thybris, Thybridis (m.)", answer: "Tiber (river god)" },
+  { word: "acies, aciei (f.)", answer: "battle line" },
+  { word: "foedus, foederis (n.)", answer: "treaty, pact" }
+];
+
+export default nouns;

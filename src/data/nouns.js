@@ -1,31 +1,17 @@
+import nouns407to453 from "./words407to453/nouns407to453";
+import nouns454to519 from "./words454to519/nouns454to519";
+import nouns520to540 from "./words520to540/nouns520to540";
+import nouns541to553 from "./words541to553/nouns541to553";
+import nouns554to584 from "./words554to584/nouns554to584";
+import nouns585to607 from "./words585to607/nouns585to607";
+
 const nouns = [
-  { word: "Minerva, Minervae", answer: "Roman goddess of wisdom" },
-  { word: "cinis, cineris", answer: "ashes" },
-  { word: "ignipotens, (gen.), ignipotentis", answer: "god/ruler of fire" },
-  { word: "specus, specus", answer: "cave" },
-  { word: "caminus, camini", answer: "forge" },
-  { word: "antrum, antri", answer: "cavern" },
-  { word: "incus, incudis", answer: "anvil" },
-  { word: "caverna, cavernae", answer: "grotto" },
-  { word: "chalybs, chalybis", answer: "iron/steel" },
-  { word: "fornax, fornacis", answer: "furnace" },
-  { word: "tellus, telluris", answer: "earth" },
-  { word: "Bronte, Brontes", answer: "name of one of horses of Sun" },
-  { word: "fulmen, fulminis", answer: "lightning" },
-  { word: "radius, radi(i)", answer: "ray" },
-  { word: "auster, austri", answer: "south wind" },
-  { word: "fulgor, fulgoris", answer: "brightness" },
-  { word: "pallas, palladis", answer: "Minerva" },
-  { word: "squama, squamae", answer: "scale" },
-  { word: "metallum, metalli", answer: "metal" },
-  { word: "clipeum, clipei", answer: "embossed shield" },
-  { word: "follis, follis", answer: "pair of bellows" },
-  { word: "bracchium, bracchi(i)", answer: "lower arm" },
-  { word: "forceps, forcipis", answer: "pincers" },
-  { word: "massa, massae", answer: "mace" },
-  { word: "aes, aeris", answer: "bronze" },
-  { word: "vis, viris", answer: "strength" },
-  { word: "anguis, anguis", answer: "snake" },
-]
+  ...nouns407to453,
+  ...nouns454to519,
+  ...nouns520to540,
+  ...nouns541to553,
+  ...nouns554to584,
+  ...nouns585to607,
+];
 
 export default nouns;

@@ -1,33 +1,17 @@
+import verbs407to453 from "./words407to453/verbs407to453";
+import verbs454to519 from "./words454to519/verbs454to519";
+import verbs520to540 from "./words520to540/verbs520to540";
+import verbs541to553 from "./words541to553/verbs541to553";
+import verbs554to584 from "./words554to584/verbs554to584";
+import verbs585to607 from "./words585to607/verbs585to607";
+
 const verbs = [
-  { word: "indo, indere, indedi, inditus", answer: "introduce" },
-  { word: "abigo, abigere, abegi, abactus", answer: "drive/send away" },
-  { word: "suscito, suscitare, suscitavi, suscitatus", answer: "encourage" },
-  { word: "sopio, sopire, sopivi, sopitus", answer: "cause to sleep" },
-  { word: "nascor, nasci, natus sum", answer: "be produced spontaneously" },
-  { word: "exedo, exedere, exedi, exesus", answer: "consume" },
-  { word: "tono, tonare, tonui, tonitus", answer: "thunder" },
-  { word: "strido, stridere, stridi", answer: "creak" },
-  { word: "anhelo, anhelare, anhelavi, anhelatus", answer: "pant" },
-  { word: "alo, alere, alui, altus", answer: "nourish" },
-  { word: "informo, informare, informavi, informatus", answer: "shape" },
-  { word: "polio, polire, polivi, politus", answer: "polish" },
-  { word: "deicio, deicere, dejeci, dejectus", answer: "throw" },
-  { word: "torqueo, torquere, torsi, tortus", answer: "turn, twist" },
-  { word: "nubo, nubere, nupsi, nuptus", answer: "marry" },
-  { word: "misceo, miscere, miscui, mixtus", answer: "mix" },
-  { word: "conecto, conectere, conexi, conexus", answer: "link together" },
-  { word: "aufero, auferre, abstuli, ablatus", answer: "put away" },
-  { word: "praecipito, praecipitare, praecipitavi, praecipitatus", answer: "cast down"},
-  { word: "incubo, incubare, incubui, incubitus", answer: "sit upon" },
-  { word: "sortior, sortiri, sortitus sum", answer: "cast or draw lots" },
-  { word: "liquesco, liquescere, -, -", answer: "become liquid" },
-  { word: "auro, aurare, auravi, auratus", answer: "overlay with gold" },
-  { word: "tingo, tingere, tinxi, tinctus", answer: "wet/moisten" },
-  { word: "gemo, gemere, gemui, gemitus", answer: "groan" },
-  { word: "verso, versare, versavi, versatus", answer: "spin" },
-  { word: "geno, genere, -, -", answer: "give birth to" },
-  { word: "deseco, desecare, desecui, desectus", answer: "sever" },
-  { word: "parito, paritare, paritavi, paritatus", answer: "make ready" },
+  ...verbs407to453,
+  ...verbs454to519,
+  ...verbs520to540,
+  ...verbs541to553,
+  ...verbs554to584,
+  ...verbs585to607,
 ]
 
 export default verbs;
