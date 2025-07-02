@@ -9,6 +9,7 @@ function OptionsPage() {
             <Button buttonText="Verbs" path="/flashcards/verbs"/>
             <Button buttonText="Adjectives" path="/flashcards/adjectives"/>
             <Button buttonText="All words" path="/flashcards"/>
+            <Button buttonText='Customise by line number' path='/lineoptions'/>
             <BackButton />
         </div>
     )

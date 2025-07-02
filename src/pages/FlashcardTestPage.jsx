@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocation } from "react-router";
 import "./css/FlashcardTestPage.css";
 import revision from "../data/revision";
 import CustomiseButton from "../components/CustomiseButton";
@@ -6,6 +7,9 @@ import Button from "../components/GeneralButton";
 
 
 function FlashcardTestPage(props) {
+  const location = useLocation();
+  const path = location.pathname;
+  const goBack = path.slice(0,-5);
   const data = props.flashcards;
 
   const [list, setList] = useState(data);
@@ -98,7 +102,7 @@ function FlashcardTestPage(props) {
           </>
         )
       )}
-      <Button buttonText="Go back" path='/flashcards'/>
+      <Button buttonText="Go back" path={goBack}/>
     </div>
   );
 }

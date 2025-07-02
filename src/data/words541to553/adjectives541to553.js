@@ -2,8 +2,6 @@ const adjectives = [
   { word: "Herculeus, Herculea, Herculeum", answer: "of Hercules, Herculean" },
   { word: "sopitus, sopita, sopitum", answer: "sleeping, dormant" },
   { word: "hesternus, hesterna, hesternum", answer: "of yesterday, previous" },
-  { word: "parvus, parva, parvum", answer: "small, little" },
-  { word: "laetus, laeta, laetum", answer: "happy, joyful" },
   { word: "praestans, praestantis", answer: "outstanding, excellent" },
   { word: "pronus, prona, pronum", answer: "bent forward, inclined" },
   { word: "segnius", answer: "more slowly, sluggishly" },

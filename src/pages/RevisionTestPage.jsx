@@ -67,7 +67,7 @@ function RevisionTestPage() {
         </button>
       ) : (
         <button id="done" onClick={handleShuffle} style={{fontSize: "2rem"}}>
-          It seems like you haven't added any words...
+          It seems like you haven't added any words, or you have revised all words!
         </button>
       )}
 

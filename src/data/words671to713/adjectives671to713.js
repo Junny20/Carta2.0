@@ -1,0 +1,35 @@
+const adjectives = [
+  { word: "tumidus, tumida, tumidum", answer: "swollen, swelling" },
+  { word: "caeruleus, caerulea, caeruleum", answer: "dark blue, sea-colored" },
+  { word: "canus, cana, canum", answer: "white, gray" },
+  { word: "clarus, clara, clarum", answer: "bright, clear" },
+  { word: "aeratus, aerata, aeratum", answer: "bronze-clad" },
+  { word: "instructus, instructa, instructum", answer: "drawn up, arranged" },
+  { word: "effulgens, effulgentis", answer: "shining, gleaming" },
+  { word: "celsus, celsa, celsum", answer: "lofty, high" },
+  { word: "geminus, gemina, geminum", answer: "twin, double" },
+  { word: "patrius, patria, patrium", answer: "of one's father, ancestral" },
+  { word: "secundus, secunda, secundum", answer: "favorable, following" },
+  { word: "arduus, ardua, arduum", answer: "steep, towering" },
+  { word: "navalis, navale", answer: "naval, of ships" },
+  { word: "barbaricus, barbarica, barbaricum", answer: "barbarian, foreign" },
+  { word: "rubrus, rubra, rubrum", answer: "red" },
+  { word: "tridens, tridentis", answer: "three-pronged" },
+  { word: "revolsus, revolsa, revolsum", answer: "torn away, wrenched" },
+  { word: "turritus, turrita, turritum", answer: "turreted, towered" },
+  { word: "volatilis, volatile", answer: "flying, winged" },
+  { word: "Neptunius, Neptunia, Neptunium", answer: "of Neptune" },
+  { word: "patrius, patria, patrium", answer: "fatherly, ancestral" },
+  { word: "geminus, gemina, geminum", answer: "twin, double" },
+  { word: "Aegyptius, Aegyptia, Aegyptium", answer: "Egyptian" },
+  { word: "omnia genus, omnis generis", answer: "of every kind, of all sorts" },
+  { word: "caelatus, caelata, caelatum", answer: "engraved, embossed" },
+  { word: "scissus, scissa, scissum", answer: "torn, rent" },
+  { word: "minax, minacis", answer: "menacing, threatening" },
+  { word: "pallens, pallentis", answer: "pale" },
+  { word: "maerens, maerentis", answer: "mourning, grieving" },
+  { word: "latebrosus, latebrosa, latebrosum", answer: "hidden, secret" }
+];
+
+export default adjectives;
+

@@ -8,9 +8,9 @@ function CustomisePage() {
             <div className="customisePage">
                 <h1>Options:</h1>
                 <div className="customisePageGrid">
-                    <Button buttonText='Verbs' path='/flashcards/verbs'/>
-                    <Button buttonText='Revise' path='/revision/test'/>
                     <Button buttonText='Nouns' path='/flashcards/nouns'/>
+                    <Button buttonText='Revise' path='/revision/test'/>
+                    <Button buttonText='Verbs' path='/flashcards/verbs'/>
                     <Button buttonText='English to Latin' path='/english'/>
                     <Button buttonText='Adjectives' path='/flashcards/adjectives'/>
                     <Button buttonText='Customise by line number' path='/lineoptions'/>
