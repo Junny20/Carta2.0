@@ -29,16 +29,48 @@ function App() {
     { path: "/", element: <LandingPage /> },
     { path: "/flashcards", element: <FlashcardPage flashcards={flashcards} /> },
     {
+      path: "/english/flashcards",
+      element: <EnglishToLatinPage flashcards={flashcards} />,
+    },
+    {
+      path: "/english/flashcards/test",
+      element: <EnglishToLatinTestPage flashcards={flashcards} />,
+    },
+    {
       path: "/flashcards/verbs",
       element: <FlashcardPage flashcards={verbs} />,
+    },
+    {
+      path: "/english/verbs",
+      element: <EnglishToLatinPage flashcards={verbs} />,
+    },
+    {
+      path: "/english/verbs/test",
+      element: <EnglishToLatinTestPage flashcards={verbs} />,
     },
     {
       path: "/flashcards/nouns",
       element: <FlashcardPage flashcards={nouns} />,
     },
     {
+      path: "/english/nouns",
+      element: <EnglishToLatinPage flashcards={nouns} />,
+    },
+    {
+      path: "/english/nouns/test",
+      element: <EnglishToLatinTestPage flashcards={nouns} />,
+    },
+    {
       path: "/flashcards/adjectives",
       element: <FlashcardPage flashcards={adjectives} />,
+    },
+    {
+      path: "/english/adjectives",
+      element: <EnglishToLatinPage flashcards={adjectives} />,
+    },
+    {
+      path: "/english/adjectives/test",
+      element: <EnglishToLatinTestPage flashcards={adjectives} />,
     },
     { path: "/signup", element: <SignupPage /> },
     { path: "/customise", element: <CustomisePage /> },
@@ -58,6 +90,7 @@ function App() {
       path: "/flashcards/adjectives/test",
       element: <FlashcardTestPage flashcards={adjectives} />,
     },
+    
     { path: "/revision/test", element: <RevisionTestPage /> },
     { path: "/options", element: <OptionsPage /> },
     { path: "/english/lineoptions", element: <LineOptionsPage /> },

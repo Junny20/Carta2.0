@@ -6,7 +6,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
 }
 
 .optionsPage button {
@@ -22,16 +22,16 @@
 
 .optionsPageGrid {
     display: grid;
-    background-color: #FF5C00;
     justify-content: center;
     align-items: center;
     grid-template-rows: repeat(6, 1fr);
     grid-template-columns: 1fr 1fr;
+    gap: 10px;
 }
 
 .optionsPageGrid button {
     background-color: #facc15;
-    color: #FF5C00;
+    color: rebeccapurple;
     width: 300px;
     height: 40px;
     transition: border-color 0.5s ease-in;

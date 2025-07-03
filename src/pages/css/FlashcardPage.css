@@ -10,8 +10,8 @@
 }
 
 #flashcard, #done {
-    width: 60vw;
-    height: 60vh;
+    width: 50vw;
+    height: 50vh;
     font-size: 3rem;
     transition: color 0.6s ease;
     transition: background-color 0.3s ease-in;
