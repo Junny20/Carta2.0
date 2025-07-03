@@ -112,16 +112,20 @@ function App() {
       element: <FlashcardTestPage flashcards={data} />,
     })),
 
-    ...flashcardNounPaths.map(({ path, data }) => ({
-      path: "/english" + path,
-      element: <EnglishToLatinPage flashcards={data} />,
-    })),
-
     ...flashcardPaths.map(({ path, data }) => ({
       path: "/english" + path + "/test",
       element: <EnglishToLatinTestPage flashcards={data} />,
     })),
 
+    ...flashcardNounPaths.map(({ path, data }) => ({
+      path: "/english" + path,
+      element: <EnglishToLatinPage flashcards={data} />,
+    })),
+
+    ...flashcardNounPaths.map(({ path, data }) => ({
+      path: "/english" + path + "/test",
+      element: <EnglishToLatinTestPage flashcards={data} />,
+    })),
 
     ...flashcardNounPaths.map(({ path, data }) => ({
       path: path,
@@ -136,6 +140,11 @@ function App() {
     ...flashcardVerbPaths.map(({ path, data }) => ({
       path: "/english" + path,
       element: <EnglishToLatinPage flashcards={data} />,
+    })),
+
+    ...flashcardVerbPaths.map(({ path, data }) => ({
+      path: "/english" + path + "/test",
+      element: <EnglishToLatinTestPage flashcards={data} />,
     })),
 
     ...flashcardVerbPaths.map(({ path, data }) => ({
@@ -151,6 +160,11 @@ function App() {
     ...flashcardAdjectivePaths.map(({ path, data }) => ({
       path: "/english" + path,
       element: <EnglishToLatinPage flashcards={data} />,
+    })),
+
+    ...flashcardAdjectivePaths.map(({ path, data }) => ({
+      path: "/english" + path + "/test",
+      element: <EnglishToLatinTestPage flashcards={data} />,
     })),
 
     ...flashcardAdjectivePaths.map(({ path, data }) => ({
