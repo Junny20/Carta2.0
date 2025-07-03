@@ -7,7 +7,7 @@ const nouns = [
   { word: "antrum, antri (n.)", answer: "cavern" },
   { word: "incus, incudis (f.)", answer: "anvil" },
   { word: "caverna, cavernae (f.)", answer: "grotto" },
-  { word: "chalybs, chalybis (m.)", answer: "iron/steel" },
+  { word: "chalybs, chalybis (m.)", answer: "iron, steel" },
   { word: "fornax, fornacis (f.)", answer: "furnace" },
   { word: "tellus, telluris (f.)", answer: "earth" },
   { word: "Bronte, Brontes (m.)", answer: "name of one of the Cyclopes" },

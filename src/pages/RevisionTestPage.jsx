@@ -3,7 +3,8 @@ import "./css/FlashcardTestPage.css";
 import revision from "../data/revision";
 import CustomiseButton from "../components/CustomiseButton";
 import Button from "../components/GeneralButton";
-
+import correct from "../assets/correct.wav";
+import wrong from "../assets/wrong.mp3";
 
 function RevisionTestPage() {
   const revisionData = revision;
@@ -13,15 +14,19 @@ function RevisionTestPage() {
   const [random, setRandom] = useState(Math.floor(Math.random() * list.length));
   const [value, setValue] = useState("");
   const [isCorrect, setIsCorrect] = useState(false);
+  const [right, setRight] = useState(0);
+  const [total, setTotal] = useState(0);
+  const [show, setShow] = useState(true);
 
-  function handleRandom() {
-    setIsAnswered(false);
-    setIsCorrect(false);
-    setRandom(Math.floor(Math.random() * list.length));
-  }
+  const correctSound = new Audio(correct);
+  correctSound.volume = 0.2;
+  const wrongSound = new Audio(wrong);
+  wrongSound.volume = 0.2;
 
   function handleShuffle() {
-    setList(data);
+    setList(revisionData);
+    setTotal(0);
+    setRight(0);
     setIsAnswered(false);
     setIsCorrect(false);
     setRandom(Math.floor(Math.random() * data.length));
@@ -44,30 +49,59 @@ function RevisionTestPage() {
 
   function handleSubmit() {
     setIsAnswered(true);
+    setTotal((prevValue) => prevValue + 1);
+
+    const yourAnswer = value.trim().toLowerCase();
     const correctAnswer = list[random].answer;
-    const yourAnswer = value;
-    if (correctAnswer.toLowerCase() === yourAnswer.toLowerCase()) {
+    const correctWordList = correctAnswer
+      .split(",")
+      .map((element) => element.trim().toLowerCase());
+
+    const finalCorrectWordList = correctWordList.map((element) => {
+      if (element.includes("(") && element.includes(")")) {
+        const index = element.indexOf("(");
+        return element.slice(0, index).trim();
+      } else {
+        return element;
+      }
+    });
+
+    console.log(finalCorrectWordList);
+    const isCorrectAnswer = finalCorrectWordList.some(
+      (element) => element === yourAnswer
+    );
+
+    if (isCorrectAnswer) {
       setIsCorrect(true);
-      console.log("Correct");
+      setRight((prevValue) => prevValue + 1);
+      correctSound.play();
     } else {
-      console.log("Incorrect: ", list[random].answer);
+      setIsCorrect(false);
+      wrongSound.play();
     }
+
     setValue("");
   }
 
   return (
-    <div className="flexbox">
+    <div className="flashcardTestPage">
+      <h2
+        style={{ cursor: "pointer" }}
+        onClick={() => setShow((prevValue) => !prevValue)}
+      >
+        {show ? "Click to show score" : `Score: ${right}/${total}`}
+      </h2>
       {list.length > 0 ? (
-        <button id="flashcardTest">
-          {isAnswered
-            ? isCorrect
-              ? `Correct! \n${list[random].answer}`
-              : `Incorrect: ${list[random].answer}`
-            : list[random].word}
+        <button
+          id="flashcardTest"
+          className={isAnswered ? (isCorrect ? "right" : "wrong") : undefined}
+        >
+          {isAnswered ? list[random].answer : list[random].word}
         </button>
       ) : (
-        <button id="done" onClick={handleShuffle} style={{fontSize: "2rem"}}>
-          It seems like you haven't added any words, or you have revised/skipped through all words!
+        <button id="done" onClick={handleShuffle} style={{ fontSize: "2rem" }}>
+          It seems like you haven't added any words, or you have revised/skipped
+          through all words! In the latter case, click to reshuffle!
         </button>
       )}
 
@@ -94,7 +128,7 @@ function RevisionTestPage() {
           </>
         )
       )}
-      <Button buttonText='Go back' path='/flashcards'/>
+      <Button buttonText="Go back" path="/flashcards" />
     </div>
   );
 }

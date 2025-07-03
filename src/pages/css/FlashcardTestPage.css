@@ -13,6 +13,7 @@
     width: 50vw;
     height: 50vh;
     font-size: 2rem;
+    transition: background-color 0.5s ease-in;
 }
 
 .flexbox4 {
@@ -47,4 +48,21 @@ button:hover {
 
 #flashcardTest:hover {
     border-color: #a3b18a;
+}
+
+#flashcardTest.right {
+    transition: background-color 0.5s ease-in;
+    background-color: #23bd1a;
+}
+
+#flashcardTest.wrong {
+    transition: background-color 0.5s ease-in;
+    background-color: rgb(186, 32, 32);
+}
+
+h2 {
+    margin: 0;
+    padding-bottom: 5px;
+    color: white;
+    font-weight: 600;
 }
