@@ -83,6 +83,16 @@ function RevisionTestPage() {
     setValue("");
   }
 
+  function handleKeyDown(event) {
+    if (event.key === "Enter") {
+        handleSubmit();
+    }
+  }
+
+  function handleKey(event) {
+    console.log(event);
+  }
+
   return (
     <div className="flashcardTestPage">
       <h2 className={show ? "scoreRevealed": "scoreNotRevealed"}
@@ -114,6 +124,7 @@ function RevisionTestPage() {
             <input
               id="answer"
               onChange={handleChange}
+              onKeyDown={handleKeyDown}
               type="text"
               name="answer"
               placeholder="Answer..."

@@ -99,8 +99,10 @@ function FlashcardTestPage(props) {
     handleNext();
   }
 
-  function handleScore() {
-    setShow((prevValue) => !prevValue);
+  function handleKeyDown(event) {
+    if (event.key === "Enter") {
+        handleSubmit();
+    }
   }
 
   return (
@@ -134,6 +136,7 @@ function FlashcardTestPage(props) {
             <input
               id="answer"
               onChange={handleChange}
+              onKeyDown={handleKeyDown}
               type="text"
               name="answer"
               placeholder="Answer..."

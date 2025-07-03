@@ -101,6 +101,12 @@ function EnglishToLatinTestPage(props) {
     handleNext();
   }
 
+  function handleKeyDown(event) {
+    if (event.key === "Enter") {
+        handleSubmit();
+    }
+  }
+
   return (
     <div className="flashcardTestPage">
       <h2 className={show ? "scoreRevealed": "scoreNotRevealed"}
@@ -132,6 +138,7 @@ function EnglishToLatinTestPage(props) {
             <input
               id="answer"
               onChange={handleChange}
+              onKeyDown={handleKeyDown}
               type="text"
               name="answer"
               placeholder="Answer..."
