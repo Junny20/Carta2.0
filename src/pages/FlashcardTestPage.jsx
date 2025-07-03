@@ -4,6 +4,9 @@ import "./css/FlashcardTestPage.css";
 import revision from "../data/revision";
 import CustomiseButton from "../components/CustomiseButton";
 import Button from "../components/GeneralButton";
+import correct from "../assets/correct.wav";
+import wrong from "../assets/wrong.mp3";
+
 
 
 function FlashcardTestPage(props) {
@@ -11,6 +14,11 @@ function FlashcardTestPage(props) {
   const path = location.pathname;
   const goBack = path.slice(0,-5);
   const data = props.flashcards;
+
+  const correctSound = new Audio(correct);
+  correctSound.volume = 0.2;
+  const wrongSound = new Audio(wrong);
+  wrongSound.volume = 0.2;
 
   const [list, setList] = useState(data);
   const [isAnswered, setIsAnswered] = useState(false);
@@ -49,11 +57,30 @@ function FlashcardTestPage(props) {
 
   function handleSubmit() {
     setIsAnswered(true);
+    const yourAnswer = value.trim().toLowerCase();
     const correctAnswer = list[random].answer;
-    const yourAnswer = value;
-    if (correctAnswer.toLowerCase() === yourAnswer.toLowerCase()) {
+    const correctWordList = correctAnswer.split(",").map(element => element.trim().toLowerCase());
+    
+    const finalCorrectWordList = correctWordList.map(element => {
+      if (element.includes("(") && element.includes(")")) {
+        const index = element.indexOf("(");
+        return element.slice(0, index).trim();
+      } else {
+        return (element)
+      }
+    })
+
+    console.log(finalCorrectWordList);
+    const isCorrectAnswer = finalCorrectWordList.some(element => element === yourAnswer);
+    
+    if (isCorrectAnswer) {
       setIsCorrect(true);
+      correctSound.play();
+    } else {
+      setIsCorrect(false);
+      wrongSound.play();
     }
+
     setValue("");
   }
 
@@ -68,8 +95,8 @@ function FlashcardTestPage(props) {
         <button id="flashcardTest">
           {isAnswered
             ? isCorrect
-              ? `Correct! \n${list[random].answer}`
-              : `Incorrect: ${list[random].answer}`
+              ? list[random].answer
+              : list[random].answer
             : list[random].word}
         </button>
       ) : (

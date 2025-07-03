@@ -8,7 +8,6 @@ function EnglishToLatinPage(props) {
   const data = props.flashcards;
   const location = useLocation();
   const path = location.pathname;
-  console.log(path);
 
   const [list, setList] = useState(data);
   const [showAnswer, setShowAnswer] = useState(false);
