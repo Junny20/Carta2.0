@@ -11,9 +11,9 @@ function CustomisePage() {
                     <Button buttonText='Nouns' path='/flashcards/nouns'/>
                     <Button buttonText='Revise' path='/revision/test'/>
                     <Button buttonText='Verbs' path='/flashcards/verbs'/>
-                    <Button buttonText='English to Latin' path='/english'/>
+                    <Button buttonText='English to Latin' path='/english/lineoptions'/>
                     <Button buttonText='Adjectives' path='/flashcards/adjectives'/>
-                    <Button buttonText='Customise by line number' path='/lineoptions'/>
+                    <Button buttonText='Customise by line number' path='/customise/lineoptions'/>
                 </div>
                 <div id="back">   
                     <Button buttonText='Go back' path='/flashcards'/>

@@ -4,20 +4,40 @@
     width: 100vw;
     display: flex;
     flex-direction: column;
-    color: white;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
 }
 
 .optionsPage button {
     background-color: #facc15;
     color: #FF5C00;
-    width: 400px;
-    height: 50px;
+    width: 300px;
+    height: 40px;
     transition: border-color 0.5s ease-in;
-    border: #facc15 4px solid;
+    border: #facc15 2px solid;
     font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.optionsPageGrid {
+    display: grid;
+    background-color: #FF5C00;
+    justify-content: center;
+    align-items: center;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: 1fr 1fr;
+}
+
+.optionsPageGrid button {
+    background-color: #facc15;
+    color: #FF5C00;
+    width: 300px;
+    height: 40px;
+    transition: border-color 0.5s ease-in;
+    border: #facc15 2px solid;
+    font-weight: 600;
+    font-size: 0.8rem;
 }
 
 .optionsPage button:hover {

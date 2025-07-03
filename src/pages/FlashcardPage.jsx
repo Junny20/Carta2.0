@@ -53,8 +53,8 @@ function FlashcardPage(props) {
         >
           Next
         </button>
-        <CustomiseButton />
         <Button buttonText="Test yourself" path = {`${path}/test`} />
+        <CustomiseButton />
       </div>
       <BackButton />
     </div>

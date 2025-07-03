@@ -1,14 +1,18 @@
 import { useState } from "react";
+import { useLocation } from "react-router";
 import "./css/FlashcardTestPage.css";
 import revision from "../data/revision";
 import CustomiseButton from "../components/CustomiseButton";
 import Button from "../components/GeneralButton";
 
 
-function RevisionTestPage() {
-  const revisionData = revision;
+function EnglishToLatinTestPage(props) {
+  const location = useLocation();
+  const path = location.pathname;
+  const goBack = path.slice(0,-5);
+  const data = props.flashcards;
 
-  const [list, setList] = useState(revisionData);
+  const [list, setList] = useState(data);
   const [isAnswered, setIsAnswered] = useState(false);
   const [random, setRandom] = useState(Math.floor(Math.random() * list.length));
   const [value, setValue] = useState("");
@@ -17,6 +21,7 @@ function RevisionTestPage() {
   function handleRandom() {
     setIsAnswered(false);
     setIsCorrect(false);
+    setValue("");
     setRandom(Math.floor(Math.random() * list.length));
   }
 
@@ -44,36 +49,39 @@ function RevisionTestPage() {
 
   function handleSubmit() {
     setIsAnswered(true);
-    const correctAnswer = list[random].answer;
+    const correctAnswer = list[random].word;
     const yourAnswer = value;
     if (correctAnswer.toLowerCase() === yourAnswer.toLowerCase()) {
       setIsCorrect(true);
-      console.log("Correct");
-    } else {
-      console.log("Incorrect: ", list[random].answer);
     }
     setValue("");
   }
 
+  function handleRevision() {
+    revision.push(list[random]);
+    handleNext();
+  }
+
   return (
-    <div className="flexbox">
+    <div className="flashcardTestPage">
       {list.length > 0 ? (
         <button id="flashcardTest">
           {isAnswered
             ? isCorrect
-              ? `Correct! \n${list[random].answer}`
-              : `Incorrect: ${list[random].answer}`
-            : list[random].word}
+              ? `Correct! \n${list[random].word}`
+              : `Incorrect: ${list[random].word}`
+            : list[random].answer}
         </button>
       ) : (
-        <button id="done" onClick={handleShuffle} style={{fontSize: "2rem"}}>
-          It seems like you haven't added any words, or you have revised/skipped through all words!
+        <button id="done" onClick={handleShuffle}>
+          All words revised. Reshuffle?
         </button>
       )}
 
       {isAnswered ? (
         <div className="flexbox4">
           <button onClick={handleNext}>Next</button>
+          <button onClick={handleRevision}>Add to revision</button>
         </div>
       ) : (
         list.length > 0 && (
@@ -88,15 +96,15 @@ function RevisionTestPage() {
             />
             <div className="flexbox4">
               <button onClick={handleSubmit}>Submit</button>
-              <button onClick={handleNext}>Skip</button>
+              <button onClick={handleRandom}>Skip</button>
               <CustomiseButton />
             </div>
           </>
         )
       )}
-      <Button buttonText='Go back' path='/flashcards'/>
+      <Button buttonText="Go back" path={goBack}/>
     </div>
   );
 }
 
-export default RevisionTestPage;
+export default EnglishToLatinTestPage;

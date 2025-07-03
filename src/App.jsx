@@ -21,6 +21,8 @@ import flashcardNounPaths from "./paths/flashcardNounPaths.js";
 import flashcardVerbPaths from "./paths/flashcardVerbPaths.js";
 import flashcardAdjectivePaths from "./paths/flashcardAdjectivePaths.js";
 import optionsPaths from "./paths/optionsPaths.js";
+import englishOptionsPaths from "./paths/englishOptionsPaths.js";
+import EnglishToLatinTestPage from "./pages/EnglisToLatinTestPage.jsx";
 
 function App() {
   const router = createBrowserRouter([
@@ -57,11 +59,17 @@ function App() {
       element: <FlashcardTestPage flashcards={adjectives} />,
     },
     { path: "/revision/test", element: <RevisionTestPage /> },
-    { path: "/english", element: <EnglishToLatinPage /> },
     { path: "/options", element: <OptionsPage /> },
+    { path: "/english/lineoptions", element: <LineOptionsPage /> },
+    { path: "/customise/lineoptions", element: <LineOptionsPage /> },
     { path: "/lineoptions", element: <LineOptionsPage /> },
 
     ...flashcardPaths.map(({ path, data }) => ({
+      path: "/english" + path,
+      element: <EnglishToLatinPage flashcards={data} />,
+    })),
+
+    ...flashcardPaths.map(({ path, data }) => ({
       path: path,
       element: <FlashcardPage flashcards={data} />,
     })),
@@ -72,6 +80,17 @@ function App() {
     })),
 
     ...flashcardNounPaths.map(({ path, data }) => ({
+      path: "/english" + path,
+      element: <EnglishToLatinPage flashcards={data} />,
+    })),
+
+    ...flashcardPaths.map(({ path, data }) => ({
+      path: "/english" + path + "/test",
+      element: <EnglishToLatinTestPage flashcards={data} />,
+    })),
+
+
+    ...flashcardNounPaths.map(({ path, data }) => ({
       path: path,
       element: <FlashcardPage flashcards={data} />,
     })),
@@ -82,6 +101,11 @@ function App() {
     })),
 
     ...flashcardVerbPaths.map(({ path, data }) => ({
+      path: "/english" + path,
+      element: <EnglishToLatinPage flashcards={data} />,
+    })),
+
+    ...flashcardVerbPaths.map(({ path, data }) => ({
       path: path,
       element: <FlashcardPage flashcards={data} />,
     })),
@@ -89,6 +113,11 @@ function App() {
     ...flashcardVerbPaths.map(({ path, data }) => ({
       path: path + "/test",
       element: <FlashcardTestPage flashcards={data} />,
+    })),
+
+    ...flashcardAdjectivePaths.map(({ path, data }) => ({
+      path: "/english" + path,
+      element: <EnglishToLatinPage flashcards={data} />,
     })),
 
     ...flashcardAdjectivePaths.map(({ path, data }) => ({
@@ -102,6 +131,8 @@ function App() {
     })),
 
     ...optionsPaths.map(({path}) => ({path: path, element: <LineNumberOptionsPage /> })),
+
+    ...englishOptionsPaths.map(({path}) => ({path: path, element: <LineNumberOptionsPage />})),
   ]);
 
   return (

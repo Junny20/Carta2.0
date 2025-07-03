@@ -1,11 +1,15 @@
 import { useState } from "react";
+import { useLocation } from "react-router";
 import "./css/FlashcardPage.css";
-import flashcards from "../data/words";
 import Button from "../components/GeneralButton";
 import CustomiseButton from "../components/CustomiseButton";
 
-function EnglishToLatinPage() {
-  const data = flashcards;
+function EnglishToLatinPage(props) {
+  const data = props.flashcards;
+  const location = useLocation();
+  const path = location.pathname;
+  console.log(path);
+
   const [list, setList] = useState(data);
   const [showAnswer, setShowAnswer] = useState(false);
   const [random, setRandom] = useState(Math.floor(Math.random() * list.length));
@@ -40,7 +44,7 @@ function EnglishToLatinPage() {
         </button>
       ) : (
         <button id="done" onClick={handleShuffle}>
-          All words revised. Reshuffle?
+          All words revised! Reshuffle?
         </button>
       )}  
 
@@ -50,9 +54,10 @@ function EnglishToLatinPage() {
         >
           Next
         </button>
+        <Button buttonText="Test yourself" path = {`${path}/test`} />
         <CustomiseButton />
       </div>
-      <Button buttonText="Go back" path="/flashcards"/>
+      <Button buttonText="Go back" path="/english/lineoptions"/>
     </div>
   );
 }
