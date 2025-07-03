@@ -23,6 +23,7 @@ import flashcardAdjectivePaths from "./paths/flashcardAdjectivePaths.js";
 import optionsPaths from "./paths/optionsPaths.js";
 import englishOptionsPaths from "./paths/englishOptionsPaths.js";
 import EnglishToLatinTestPage from "./pages/EnglisToLatinTestPage.jsx";
+import NotFoundPage from "./pages/NotFoundPage.jsx";
 
 function App() {
   const router = createBrowserRouter([
@@ -180,6 +181,8 @@ function App() {
     ...optionsPaths.map(({path}) => ({path: path, element: <LineNumberOptionsPage /> })),
 
     ...englishOptionsPaths.map(({path}) => ({path: path, element: <LineNumberOptionsPage />})),
+
+    { path: "*", element: <NotFoundPage /> }
   ]);
 
   return (
