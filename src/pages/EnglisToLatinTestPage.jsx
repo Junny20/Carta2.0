@@ -103,8 +103,7 @@ function EnglishToLatinTestPage(props) {
 
   return (
     <div className="flashcardTestPage">
-      <h2
-        style={{ cursor: "pointer" }}
+      <h2 className={show ? "scoreRevealed": "scoreNotRevealed"}
         onClick={() => setShow((prevValue) => !prevValue)}
       >
         {show ? "Click to show score" : `Score: ${right}/${total}`}

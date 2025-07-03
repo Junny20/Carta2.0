@@ -60,9 +60,27 @@ button:hover {
     background-color: rgb(186, 32, 32);
 }
 
-h2 {
+.scoreRevealed {
     margin: 0;
     padding-bottom: 5px;
     color: white;
     font-weight: 600;
+    cursor: pointer;
+    animation: fadeOut 3s ease-in forwards;
+}
+
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+    }
+}
+
+.scoreNotRevealed {
+    margin: 0;
+    padding-bottom: 5px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    opacity: 1;
 }
