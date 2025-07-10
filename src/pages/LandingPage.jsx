@@ -1,7 +1,8 @@
-import "./css/LandingPage.css"
-import ContinueButton from "../components/ContinueButton"
-import SignupButton from "../components/SignupButton"
-import Footer from "../components/Footer"
+import "./css/LandingPage.css";
+import ContinueButton from "../components/ContinueButton";
+import SignupButton from "../components/SignupButton";
+import LoginButton from "../components/LoginButton";
+import Footer from "../components/Footer";
 
 function LandingPage() {
     return (
@@ -11,6 +12,8 @@ function LandingPage() {
                 <h2>Aeneid Vocab made easy.</h2>
                 <div className="flexbox2">
                     <ContinueButton />
+                    <SignupButton />
+                    <LoginButton />
                 </div>
                 
             </div>

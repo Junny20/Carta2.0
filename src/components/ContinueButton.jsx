@@ -7,7 +7,7 @@ function ContinueButton() {
     navigate("/options"); 
   };
 
-  return <button onClick={handleGuestContinue}>Continue</button>;
+  return <button onClick={handleGuestContinue}>Continue as Guest</button>;
 }
 
 export default ContinueButton;

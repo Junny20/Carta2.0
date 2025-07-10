@@ -5,6 +5,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingPage from "./pages/LandingPage.jsx";
 import FlashcardPage from "./pages/FlashcardPage.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
+import LoggedInPage from "./pages/Protected/LoggedInPage.jsx";
 import CustomisePage from "./pages/CustomisePage.jsx";
 import FlashcardTestPage from "./pages/FlashcardTestPage.jsx";
 import RevisionTestPage from "./pages/RevisionTestPage.jsx";
@@ -24,6 +26,11 @@ import optionsPaths from "./paths/optionsPaths.js";
 import englishOptionsPaths from "./paths/englishOptionsPaths.js";
 import EnglishToLatinTestPage from "./pages/EnglisToLatinTestPage.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
+import ProfilePage from "./pages/Protected/ProfilePage.jsx";
+import UpdatePasswordPage from "./pages/UpdatePasswordPage.jsx";
+import ResetPasswordPage from "./pages/ResetPasswordPage.jsx";
+import ProtectedRoutes from "./utils/ProtectedRoutes.jsx";
+import UserFlashCardPage from "./pages/Protected/UserFlashcardPage.jsx";
 
 function App() {
   const router = createBrowserRouter([
@@ -74,6 +81,9 @@ function App() {
       element: <EnglishToLatinTestPage flashcards={adjectives} />,
     },
     { path: "/signup", element: <SignupPage /> },
+    { path: "/login", element: <LoginPage /> },
+    { path: "/update-password", element: <UpdatePasswordPage /> },
+    { path: "/reset-password", element: <ResetPasswordPage /> },
     { path: "/customise", element: <CustomisePage /> },
     {
       path: "/flashcards/test",
@@ -91,7 +101,7 @@ function App() {
       path: "/flashcards/adjectives/test",
       element: <FlashcardTestPage flashcards={adjectives} />,
     },
-    
+
     { path: "/revision/test", element: <RevisionTestPage /> },
     { path: "/options", element: <OptionsPage /> },
     { path: "/english/lineoptions", element: <LineOptionsPage /> },
@@ -178,11 +188,29 @@ function App() {
       element: <FlashcardTestPage flashcards={data} />,
     })),
 
-    ...optionsPaths.map(({path}) => ({path: path, element: <LineNumberOptionsPage /> })),
+    ...optionsPaths.map(({ path }) => ({
+      path: path,
+      element: <LineNumberOptionsPage />,
+    })),
 
-    ...englishOptionsPaths.map(({path}) => ({path: path, element: <LineNumberOptionsPage />})),
+    ...englishOptionsPaths.map(({ path }) => ({
+      path: path,
+      element: <LineNumberOptionsPage />,
+    })),
 
-    { path: "*", element: <NotFoundPage /> }
+    {
+      element: <ProtectedRoutes />,
+      children: [
+        { path: "/front", element: <LoggedInPage /> },
+        { path: "/profile", element: <ProfilePage /> },
+        {
+          path: "/user/flashcards",
+          element: <UserFlashCardPage flashcards={flashcards} />,
+        },
+      ],
+    },
+
+    { path: "*", element: <NotFoundPage /> },
   ]);
 
   return (
