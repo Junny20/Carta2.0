@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React from "react";
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingPage from "./pages/LandingPage.jsx";
@@ -30,7 +29,6 @@ import ProfilePage from "./pages/Protected/ProfilePage.jsx";
 import UpdatePasswordPage from "./pages/UpdatePasswordPage.jsx";
 import ResetPasswordPage from "./pages/ResetPasswordPage.jsx";
 import ProtectedRoutes from "./utils/ProtectedRoutes.jsx";
-import UserFlashCardPage from "./pages/Protected/UserFlashcardPage.jsx";
 
 function App() {
   const router = createBrowserRouter([
@@ -203,10 +201,6 @@ function App() {
       children: [
         { path: "/front", element: <LoggedInPage /> },
         { path: "/profile", element: <ProfilePage /> },
-        {
-          path: "/user/flashcards",
-          element: <UserFlashCardPage flashcards={flashcards} />,
-        },
       ],
     },
 

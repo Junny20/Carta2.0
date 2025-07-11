@@ -84,3 +84,12 @@ button:hover {
     cursor: pointer;
     opacity: 1;
 }
+
+#details {
+    position: fixed;
+    top: 0%;
+    right: 1vw;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+}

@@ -11,7 +11,7 @@ function LandingPage() {
                 <h1>Carta</h1>
                 <h2>Aeneid Vocab made easy.</h2>
                 <div className="flexbox2">
-                    <Button buttonText="Continue" path="/user/flashcards"/>
+                    <Button buttonText="Continue" path="/flashcards"/>
                     <Button buttonText="Profile" path="/profile"/>
                     <SignoutButton />
                 </div>

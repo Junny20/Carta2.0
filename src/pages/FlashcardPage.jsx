@@ -4,6 +4,7 @@ import "./css/FlashcardPage.css";
 import BackButton from "../components/BackButton";
 import CustomiseButton from "../components/CustomiseButton";
 import Button from "../components/GeneralButton";
+import Verify from "../utils/verify";
 
 function FlashcardPage(props) {
   const location = useLocation();
@@ -36,6 +37,7 @@ function FlashcardPage(props) {
 
   return (
     <div className="flexbox">
+      <Verify />
       <p className="hint fade">Click on card to reveal translation</p>
       {list.length > 0 ? (
         <button id="flashcard" className={isActive ? "active" : undefined} onClick={handleAnswer}>

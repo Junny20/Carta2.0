@@ -45,6 +45,15 @@
     animation: fadeOut 5s ease-in forwards;
 }
 
+#details {
+    position: fixed;
+    top: 0%;
+    right: 1vw;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+}
+
 @keyframes fadeOut {
     to {
         opacity: 0;

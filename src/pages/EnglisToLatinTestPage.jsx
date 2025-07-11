@@ -3,6 +3,7 @@ import { useLocation } from "react-router";
 import "./css/FlashcardTestPage.css";
 import revision from "../data/revision";
 import CustomiseButton from "../components/CustomiseButton";
+import Verify from "../utils/verify";
 import Button from "../components/GeneralButton";
 import correct from "../assets/correct.wav";
 import wrong from "../assets/wrong.mp3";
@@ -109,6 +110,7 @@ function EnglishToLatinTestPage(props) {
 
   return (
     <div className="flashcardTestPage">
+      <Verify />
       <h2 className={show ? "scoreRevealed": "scoreNotRevealed"}
         onClick={() => setShow((prevValue) => !prevValue)}
       >

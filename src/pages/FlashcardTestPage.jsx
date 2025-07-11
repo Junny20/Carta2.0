@@ -6,6 +6,7 @@ import CustomiseButton from "../components/CustomiseButton";
 import Button from "../components/GeneralButton";
 import correct from "../assets/correct.wav";
 import wrong from "../assets/wrong.mp3";
+import Verify from "../utils/verify";
 
 function FlashcardTestPage(props) {
   const location = useLocation();
@@ -107,6 +108,7 @@ function FlashcardTestPage(props) {
 
   return (
     <div className="flashcardTestPage">
+      <Verify />
       <h2 className={show ? "scoreRevealed": "scoreNotRevealed"}
         onClick={() => setShow((prevValue) => !prevValue)}
       >

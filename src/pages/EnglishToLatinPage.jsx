@@ -3,6 +3,7 @@ import { useLocation } from "react-router";
 import "./css/FlashcardPage.css";
 import Button from "../components/GeneralButton";
 import CustomiseButton from "../components/CustomiseButton";
+import Verify from "../utils/verify";
 
 function EnglishToLatinPage(props) {
   const data = props.flashcards;
@@ -37,6 +38,7 @@ function EnglishToLatinPage(props) {
 
   return (
     <div className="flexbox">
+      <Verify />
       {list.length > 0 ? (
         <button id="flashcard" className={isActive ? "active" : undefined} onClick={handleAnswer}>
           {showAnswer ? list[random].word : list[random].answer}
