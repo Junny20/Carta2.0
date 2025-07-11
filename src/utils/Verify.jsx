@@ -27,7 +27,6 @@ function Verify() {
           return;
         } else {
           const details = userData[0];
-          console.log(details);
           setUserDetails({ username: details.username, level: details.level });
         }
       }

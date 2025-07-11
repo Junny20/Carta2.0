@@ -29,7 +29,7 @@ function LoginPage() {
         } else if (data?.user) {
             console.log(data);
             setMessage("Successfully logged in!");
-            navigate("/front");
+            navigate("/");
         }
     }
 

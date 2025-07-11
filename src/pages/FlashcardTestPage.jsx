@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router";
 import "./css/FlashcardTestPage.css";
 import revision from "../data/revision";
@@ -7,17 +7,21 @@ import Button from "../components/GeneralButton";
 import correct from "../assets/correct.wav";
 import wrong from "../assets/wrong.mp3";
 import Verify from "../utils/verify";
+import supabase from "../supabaseClient";
 
 function FlashcardTestPage(props) {
+  const correctSoundRef = useRef(new Audio(correct));
+  const wrongSoundRef = useRef(new Audio(wrong));
+
   const location = useLocation();
   const path = location.pathname;
   const goBack = path.slice(0, -5);
   const data = props.flashcards;
 
-  const correctSound = new Audio(correct);
-  correctSound.volume = 0.2;
-  const wrongSound = new Audio(wrong);
-  wrongSound.volume = 0.2;
+  useEffect(() => {
+    correctSoundRef.current.volume = 0.2;
+    wrongSoundRef.current.volume = 0.2;
+  }, []);
 
   const [list, setList] = useState(data);
   const [isAnswered, setIsAnswered] = useState(false);
@@ -27,6 +31,43 @@ function FlashcardTestPage(props) {
   const [right, setRight] = useState(0);
   const [total, setTotal] = useState(0);
   const [show, setShow] = useState(true);
+
+  const [loggedin, setLoggedIn] = useState(false);
+  const [id, setId] = useState(null);
+
+  useEffect(() => {
+    const getUser = async () => {
+      const { data, error } = await supabase.auth.getUser();
+
+      if (error) {
+        console.error(error.message);
+        return;
+      } else if (data) {
+        setLoggedIn(true);
+        setId(data.user?.id);
+      }
+    };
+
+    getUser();
+  }, []);
+
+  const updateFlashcardsTested = async () => {
+    const {data: flashcardsTestedData, error: fetchError} = await supabase.from("users").select("flashcards_tested").eq("id", id).single();
+    
+    if (fetchError) {
+      console.error(fetchError.message);
+      return;
+    }
+
+    const flashcardsTested = flashcardsTestedData.flashcards_tested;
+
+    const { error: updateError } = await supabase.from("users").update({flashcards_tested: flashcardsTested + 1}).eq("id", id);
+
+    if (updateError) {
+      console.error(updateError.message);
+      return;
+    }
+  }
 
   function handleRandom() {
     setIsAnswered(false);
@@ -63,6 +104,10 @@ function FlashcardTestPage(props) {
     setIsAnswered(true);
     setTotal((prevValue) => prevValue + 1);
 
+    if (loggedin) {
+      updateFlashcardsTested();
+    }
+
     const yourAnswer = value.trim().toLowerCase();
     const correctAnswer = list[random].answer;
     const correctWordList = correctAnswer
@@ -78,6 +123,7 @@ function FlashcardTestPage(props) {
       }
     });
 
+    //remove later
     console.log(finalCorrectWordList);
     const isCorrectAnswer = finalCorrectWordList.some(
       (element) => element === yourAnswer
@@ -86,10 +132,10 @@ function FlashcardTestPage(props) {
     if (isCorrectAnswer) {
       setIsCorrect(true);
       setRight((prevValue) => prevValue + 1);
-      correctSound.play();
+      correctSoundRef.current.play();
     } else {
       setIsCorrect(false);
-      wrongSound.play();
+      wrongSoundRef.current.play();
     }
 
     setValue("");
