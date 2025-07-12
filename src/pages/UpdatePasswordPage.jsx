@@ -1,8 +1,15 @@
 import supabase from "../supabaseClient";
 import Input from "../components/Input";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 function ForgotPasswordPage() {
+  const navigate = useNavigate();
+
+  const redirect = () => {setTimeout(() => {
+        navigate("/")
+      }, 2000)}
+
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("")
 
@@ -10,7 +17,7 @@ function ForgotPasswordPage() {
     e.preventDefault();
     setMessage("Loading...")
 
-    const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
       //change on deploy
       redirectTo: "http://localhost:5173/reset-password"
     });
@@ -18,16 +25,18 @@ function ForgotPasswordPage() {
     if (error) {
       setMessage(`Reset error: ${error.message}`);
       console.error("Reset error:", error.message);
+      redirect();
     } else {
-      console.log(data);
       setMessage(`Reset link sent to: ${email}`);
       console.log("Reset link sent to:", email);
+      redirect();
     }
   };
 
   return (
     <>
       <form onSubmit={handleSubmit}>
+        <p style = {{fontSize: "32px", fontWeight: 500, color: "#00796b", paddingBottom: "30px"}}>mutare tesseram</p>
         <Input
           placeholder="Email..."
           name="email"
@@ -36,7 +45,7 @@ function ForgotPasswordPage() {
           value={email}
         />
         <button type="submit">Submit</button>
-        <p>{message}</p>
+        <p style={{ fontWeight: 400, color: "#00796b"}}>{message}</p>
       </form>
     </>
   );

@@ -7,7 +7,6 @@ function NotFoundPage() {
       style={{
         padding: "2rem",
         textAlign: "center",
-        backgroundColor: "white",
         width: "96vw",
         height: "55vh",
         paddingTop: "40vh"
