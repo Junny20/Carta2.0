@@ -1,32 +1,50 @@
 .profile-container {
-  max-width: 500px;
+  max-width: 520px;
   margin: 40px auto;
-  padding: 24px;
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
-  font-family: 'Segoe UI', sans-serif;
+  padding: 28px;
+  background-color: #e0f7fa; 
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
+  color: #37474f; 
 }
 
 .profile-container h1 {
-  font-size: 28px;
+  font-size: 30px;
   margin-bottom: 24px;
-  color: #333;
+  color: #00796b; 
 }
 
 .profile-container p {
-  font-size: 16px;
-  margin: 10px 0;
-  color: #444;
+    font-size: 16px;
+    margin: 12px 0;
+    color: #0c7569;
+    font-weight: 500;
 }
 
 .profile-buttons {
-  margin-top: 30px;
+  margin-top: 32px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
   align-items: center;
+}
+
+.profile-buttons button {
+  background-color: #26a69a;
+  color: white;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.profile-buttons button:hover {
+  background-color: #00796b;
 }
 
 @media (min-width: 500px) {

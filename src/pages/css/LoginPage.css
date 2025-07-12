@@ -1,6 +1,6 @@
 h1 {
     text-align: center;
-    color: white;
+    color: #00796b
 }
 
 form {
@@ -32,7 +32,7 @@ input[type="password"] {
 
 input[type="email"]:focus,
 input[type="password"]:focus {
-  border-color: #007bff;
+  border-color: #26a69a;;
   outline: none;
 }
 
@@ -85,8 +85,14 @@ a:hover {
 
 #signup button {
     width: 20vw;
-    background-color: #333;
+    background-color: #26a69a;
     color: white;
+    transition: background-color 0.3s ease;
+}
+
+#signup button:hover {
+    background-color: #00796b; 
+    border-color: #00796b;
 }
 
 

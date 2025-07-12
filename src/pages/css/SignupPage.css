@@ -1,16 +1,23 @@
-h1 {
+body {
   margin: 0;
+  background-color: #e0f7fa; 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+  margin: 20px 0 10px;
   text-align: center;
-  font-size: 3rem;
-  color: white;
+  font-size: 2.5rem;
+  color: #00796b; 
 }
 
 .signup-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 40px;
 }
 
 .signup-container form {
@@ -18,19 +25,29 @@ h1 {
   flex-direction: column;
   width: 400px;
   height: 300px;
+  max-width: 90vw;
   margin: 20px;
-  padding: 60px 50px;
-  align-items: center;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 50px 40px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
 .signup-container > button {
-    width: 20vw;
-    background-color: #333;
-    color: white;
+  width: 200px;
+  background-color: #26a69a;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 0;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.signup-container > button:hover {
+  background-color: #00796b; 
+  border-color: #00796b;
 }
 
 input[type="text"],
@@ -49,39 +66,42 @@ input[type="password"] {
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus {
-  border-color: #007bff;
+  border-color: #26a69a; 
   outline: none;
 }
 
 button[type="submit"] {
-  width: 90%;
+  width: 100%;
   padding: 12px 0;
-  background-color: #007bff;
+  background-color: #26a69a; 
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   color: white;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 17px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 button[type="submit"]:hover {
-  background-color: #0056b3;
+  background-color: #00796b; 
 }
 
 #message {
   text-align: center;
   font-size: 14px;
-  color: black;
+  color: #37474f;
   min-height: 20px;
+  margin-top: -10px;
 }
 
 @media (max-width: 480px) {
-  form {
-    width: 90%;
-    margin: 20px auto;
+  .signup-container form {
     padding: 30px 20px;
+  }
+
+  h1 {
+    font-size: 2rem;
   }
 
   button[type="submit"] {

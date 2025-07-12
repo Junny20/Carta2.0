@@ -1,11 +1,9 @@
 import React from "react";
-import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingPage from "./pages/LandingPage.jsx";
 import FlashcardPage from "./pages/FlashcardPage.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
-import LoggedInPage from "./pages/Protected/LoggedInPage.jsx";
 import CustomisePage from "./pages/CustomisePage.jsx";
 import FlashcardTestPage from "./pages/FlashcardTestPage.jsx";
 import RevisionTestPage from "./pages/RevisionTestPage.jsx";
@@ -199,7 +197,6 @@ function App() {
     {
       element: <ProtectedRoutes />,
       children: [
-        { path: "/front", element: <LoggedInPage /> },
         { path: "/profile", element: <ProfilePage /> },
       ],
     },

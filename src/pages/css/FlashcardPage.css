@@ -1,53 +1,70 @@
 .flexbox {
-    background-color: #aadc54;
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+  background-color: #f0f4ef; 
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
 }
 
-#flashcard, #done {
-    width: 50vw;
-    height: 50vh;
-    font-size: 2rem;
-    transition: color 0.6s ease;
-    transition: background-color 0.3s ease-in;
+#flashcard,
+#done {
+  width: 50vw;
+  height: 50vh;
+  font-size: 2rem;
+  background-color: #ffffff;
+  color: #333;
+  border: 2px solid #cce3de;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease-in, color 0.3s ease;
 }
 
 #flashcard.active {
-    background-color: #2f4705;
-    transition: background-color 0.3s ease-in;
-    color: rgb(238, 255, 0);
+  background-color: #8ecae6; 
+  color: #fff;
+  border-color: #219ebc;
 }
 
 .flexbox3 {
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .flexbox button {
-    background-color: #a3b18a;
-    color: white;
+  background-color: #219ebc;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.flexbox button:hover {
+  background-color: #126782;
 }
 
 .flexbox3 button {
-    margin: 5px;
+  margin: 5px;
 }
 
 .hint {
-    color: white;
-    font-size: 2rem;
-    margin: 0;
-    padding-bottom: 10px;
-    font-weight: 500;
-    animation: fadeOut 5s ease-in forwards;
+  color: #555;
+  font-size: 1.5rem;
+  margin: 0;
+  padding-bottom: 10px;
+  font-weight: 500;
+  animation: fadeOut 5s ease-in forwards;
 }
 
 @keyframes fadeOut {
-    to {
-        opacity: 0;
-    }
+  to {
+    opacity: 0;
+  }
 }
-

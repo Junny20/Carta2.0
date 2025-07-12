@@ -1,45 +1,56 @@
 .optionsPage {
-    background-color: #FF5C00;
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+  background-color: #e0f2f1; 
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .optionsPage button {
-    background-color: #facc15;
-    color: #FF5C00;
-    width: 300px;
-    height: 40px;
-    transition: border-color 0.5s ease-in;
-    border: #facc15 2px solid;
-    font-weight: 600;
-    font-size: 0.8rem;
-}
-
-.optionsPageGrid {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    grid-template-rows: repeat(6, 1fr);
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-}
-
-.optionsPageGrid button {
-    background-color: #facc15;
-    color: rebeccapurple;
-    width: 300px;
-    height: 40px;
-    transition: border-color 0.5s ease-in;
-    border: #facc15 2px solid;
-    font-weight: 600;
-    font-size: 0.8rem;
+  background-color: #26a69a; 
+  color: white;
+  width: 300px;
+  height: 42px;
+  border: 2px solid #26a69a;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .optionsPage button:hover {
-    border-color: #FF5C00;
+  background-color: #00796b; 
+  border-color: #00796b;
+}
+
+.optionsPageGrid {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.optionsPageGrid button {
+  background-color: #b2dfdb; 
+  color: #37474f; 
+  width: 300px;
+  height: 40px;
+  border: 2px solid #b2dfdb;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.optionsPageGrid button:hover {
+  background-color: #80cbc4;
+  border-color: #26a69a;
 }

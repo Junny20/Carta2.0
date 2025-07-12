@@ -1,86 +1,100 @@
 .flashcardTestPage {
-    background-color: #aadc54;
-    display: flex;
-    height: 100vh;
-    width: 100vw;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+  background-color: #f0f4ef; 
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#flashcardTest, #done {
-    width: 50vw;
-    height: 50vh;
-    font-size: 2rem;
-    transition: background-color 0.5s ease-in;
-}
-
-.flexbox4 {
-    flex-direction: row;
-}
-
-.flexbox4 button {
-    margin: 5px;
-}
-
-.flashcardTestPage button {
-    background-color: #a3b18a;
-    color: white;
-}
-
-#answer {
-    margin: 3px;
-    padding-left: 11px;
-    width: 49vw;
-    height: 40px;
-    border: none;
-    border-radius: 5px;
-}
-
-#answer:focus {
-    outline: none;
-}
-
-button:hover {
-  border-color: navajowhite;
-}
-
-#flashcardTest:hover {
-    border-color: #a3b18a;
+#flashcardTest,
+#done {
+  width: 50vw;
+  height: 50vh;
+  font-size: 2rem;
+  background-color: #ffffff;
+  color: #333;
+  border: 2px solid #cce3de;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: background-color 0.5s ease-in, border-color 0.3s ease;
+  cursor: pointer;
 }
 
 #flashcardTest.right {
-    transition: background-color 0.5s ease-in;
-    background-color: #23bd1a;
+  background-color: #8bc34a; 
+  color: white;
+  border-color: #689f38;
 }
 
 #flashcardTest.wrong {
-    transition: background-color 0.5s ease-in;
-    background-color: rgb(186, 32, 32);
+  background-color: #e57373; 
+  color: white;
+  border-color: #c62828;
+}
+
+#flashcardTest:hover,
+#done:hover {
+  border-color: #90caf9;
+}
+
+.flashcardTestPage button {
+  background-color: #219ebc;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.flashcardTestPage button:hover {
+  background-color: #126782;
+}
+
+.flexbox4 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+#answer {
+  margin: 4px 0;
+  padding: 10px 15px;
+  width: 48vw;
+  height: 40px;
+  font-size: 1rem;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.3s ease;
+}
+
+#answer:focus {
+  outline: none;
+  border-color: #219ebc;
+}
+
+.scoreRevealed,
+.scoreNotRevealed {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #444;
+  cursor: pointer;
+  padding-bottom: 6px;
 }
 
 .scoreRevealed {
-    margin: 0;
-    padding-bottom: 5px;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-    animation: fadeOut 4s ease-in forwards;
+  animation: fadeOut 4s ease-in forwards;
 }
-
 
 @keyframes fadeOut {
-    to {
-        opacity: 0;
-    }
-}
-
-.scoreNotRevealed {
-    margin: 0;
-    padding-bottom: 5px;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-    opacity: 1;
+  to {
+    opacity: 0;
+  }
 }

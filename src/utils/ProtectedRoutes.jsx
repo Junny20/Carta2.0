@@ -3,37 +3,37 @@ import { useState, useEffect } from "react";
 import supabase from "../supabaseClient";
 
 function ProtectedRoutes() {
-    const [id, setId] = useState(null);
-    const [checking, setChecking] = useState(true);
-    const [message, setMessage] = useState("Loading...")
+  const [id, setId] = useState(null);
+  const [checking, setChecking] = useState(true);
+  const [message, setMessage] = useState("Loading...");
 
-    useEffect(() => {
-        const getUserDetails = async () => {
-            const { data, error } = await supabase.auth.getUser();
+  useEffect(() => {
+    const getUserDetails = async () => {
+      const { data, error } = await supabase.auth.getUser();
 
-            if (error) {
-                console.error(error.message);
-                setMessage(error.message);
-                setChecking(false);
-                return
-            }
+      if (error) {
+        console.error(error.message);
+        setMessage(error.message);
+        setChecking(false);
+        return;
+      }
 
-            setId(data?.user?.id || null);
-            setChecking(false);
-        }
+      setId(data?.user?.id || null);
+      setChecking(false);
+    };
 
-        getUserDetails();
-    }, [])
+    getUserDetails();
+  }, []);
 
-    if (checking) {
-        return(
-            <p>{message}</p>
-        )
-    }
-
+  if (checking) {
     return (
-        id ? <Outlet /> : <Navigate to="/login"/>
-    )
+      <p style={{ color: "#0c7569", fontWeight: 500, fontSize: "32px" }}>
+        {message}
+      </p>
+    );
+  }
+
+  return id ? <Outlet /> : <Navigate to="/login" />;
 }
 
 export default ProtectedRoutes;
