@@ -3,6 +3,7 @@ import Input from "../components/Input";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import supabase from "../supabaseClient";
+import "./css/SignupPage.css";
 
 function Signup() {
     const navigate = useNavigate(); 
@@ -54,17 +55,18 @@ function Signup() {
     }
 
     return (
-        <>
+        <div className="signup-container">
+            <h1>Salve!</h1>
             <form onSubmit={handleSubmit}>
                 <Input type="text" onChange={setUsername} name="username" placeholder="Username... " value={username}/>
                 <Input type="email" onChange={setEmail} name="email" placeholder="Email..." value={email}/>
                 <Input type="password" onChange={setPassword} name="password" placeholder="Password..." value={password}/>
                 <Input type="password" onChange={setConfirmPassword} name="confirmPassword" placeholder="Confirm password..." value={confirmPassword}/>
                 <button type="submit">Submit</button>
+                <p id="message">{message}</p>
             </form>
-            <p>{message}</p>
             <BackButton />
-        </>
+        </div>
     )
 }
 

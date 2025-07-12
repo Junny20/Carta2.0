@@ -1,3 +1,4 @@
+import "../css/ProfilePage.css";
 import { useState, useEffect } from "react";
 import supabase from "../../supabaseClient";
 import Button from "../../components/GeneralButton";
@@ -17,18 +18,28 @@ function ProfilePage() {
       const { data, error } = await supabase
         .from("users")
         .select()
-        .eq("id", id);
+        .eq("id", id)
+        .single()
 
       if (error) {
         console.error(error.message);
       } else {
-        const userData = data[0];
+        const baseXp = 100;
+        const totalXp = data.flashcards_read * 5 + data.flashcards_tested * 10;
+        let userLevel = 0;
+
+        const getXpNeeded = lvl => Math.floor(baseXp * Math.pow(lvl, 1.2));
+
+        while (totalXp >= getXpNeeded(userLevel + 1)) {
+          userLevel += 1;
+        }
 
         setProfile({
-          username: userData.username,
-          email: userData.email,
-          flashcards_read: userData.flashcards_read,
-          flashcards_tested: userData.flashcards_tested,
+          username: data.username,
+          email: data.email,
+          level: userLevel,
+          flashcards_read: data.flashcards_read,
+          flashcards_tested: data.flashcards_tested,
         });
       }
     };
@@ -46,16 +57,19 @@ function ProfilePage() {
   }, []);
 
   return (
-    <>
+    <div className="profile-container">
       <h1>Profile</h1>
       <p>Email: {profile.email}</p>
       <p>Username: {profile.username}</p>
+      <p>Level: {profile.level}</p>
       <p>Flashcards Read: {profile.flashcards_read}</p>
       <p>Flashcards Tested: {profile.flashcards_tested}</p>
-      <Button buttonText="Menu" path="/"/>
-      <Button buttonText="Options" path="/options"/>
-      <SignoutButton />
-    </>
+      <div className="profile-buttons">
+        <Button buttonText="Menu" path="/"/>
+        <Button buttonText="Options" path="/options"/>
+        <SignoutButton />
+      </div>
+    </div>
   );
 }
 

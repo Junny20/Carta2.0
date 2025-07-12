@@ -25,7 +25,7 @@ function LandingPage() {
   return (
     <>
       <div className="landingPage">
-        <h1>Carta</h1>
+        <h1 id="title">Carta</h1>
         <h2>Aeneid Vocab made easy.</h2>
         <div className="flexbox2">
           {loggedin ? (

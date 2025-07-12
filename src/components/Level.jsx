@@ -6,7 +6,7 @@ function Level({ name, flashcardsRead, flashcardsTested, baseXp = 100 }) {
   const totalXp = flashcardsRead * 5 + flashcardsTested * 10;
   let level = 0;
 
-  const getXpForLevel = (lvl) => Math.floor(baseXp * Math.pow(lvl, 1.5));
+  const getXpForLevel = (lvl) => Math.floor(baseXp * Math.pow(lvl, 1.2));
 
   while (totalXp >= getXpForLevel(level + 1)) {
     level += 1;

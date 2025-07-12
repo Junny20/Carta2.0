@@ -1,3 +1,4 @@
+import "./css/LoginPage.css"
 import supabase from "../supabaseClient";
 import BackButton from "../components/BackButton";
 import Button from "../components/GeneralButton";
@@ -11,7 +12,6 @@ function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
-    const [showResetPassword, setShowResetPassword] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -34,16 +34,21 @@ function LoginPage() {
     }
 
     return (
-        <>
+        <>  
+            <h1>Salve Iterum!</h1>
             <form onSubmit={handleSubmit}>
                 <Input type="email" onChange={setEmail} name="email" placeholder="Email..." value={email}/>
                 <Input type="password" onChange={setPassword} name="password" placeholder="Password..." value={password}/>
                 <button type="submit">Submit</button>
+                <p>{message}</p>
+                <a href="/update-password">Forgotten password?</a> 
             </form>
-            <p>{message}</p>
-            <a href="/signup">New user? Sign up!</a>
-            {showResetPassword && <a href="/update-password">Forgot password?</a>}    
-            <BackButton/>
+            <div id="signup">
+                <Button buttonText="New user? Sign up!" path="/signup" />
+                <BackButton/>
+            </div>
+            
+            
         </>
     )
 }

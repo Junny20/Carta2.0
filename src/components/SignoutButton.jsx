@@ -1,16 +1,13 @@
 import supabase from "../supabaseClient";
-import { useNavigate } from "react-router";
 
 function SignoutButton() {
-    const navigate = useNavigate();
-
     const handleClick = async () => {
         const { error } = await supabase.auth.signOut();
 
         if (error) {
             console.error(error.message);
         } else {
-            navigate("/");
+            window.location.href = "/";
         }
     }
 
