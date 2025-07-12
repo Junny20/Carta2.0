@@ -27,7 +27,6 @@ function ProfilePage() {
         setProfile({
           username: userData.username,
           email: userData.email,
-          level: userData.level,
           flashcards_read: userData.flashcards_read,
           flashcards_tested: userData.flashcards_tested,
         });
@@ -51,10 +50,10 @@ function ProfilePage() {
       <h1>Profile</h1>
       <p>Email: {profile.email}</p>
       <p>Username: {profile.username}</p>
-      <p>Level: {profile.level}</p>
       <p>Flashcards Read: {profile.flashcards_read}</p>
       <p>Flashcards Tested: {profile.flashcards_tested}</p>
-      <Button buttonText="Back to menu" path="/front"/>
+      <Button buttonText="Menu" path="/"/>
+      <Button buttonText="Options" path="/options"/>
       <SignoutButton />
     </>
   );

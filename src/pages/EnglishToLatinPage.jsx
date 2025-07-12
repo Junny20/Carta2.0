@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "react-router";
 import "./css/FlashcardPage.css";
 import Button from "../components/GeneralButton";
 import CustomiseButton from "../components/CustomiseButton";
-import Verify from "../utils/verify";
+import updateFlashcardsRead from "../utils/UpdateFlashcardsRead";
+import getUser from "../utils/getUser";
+import getUserDetails from "../utils/getUserDetails";
+import Level from "../components/Level";
 
 function EnglishToLatinPage(props) {
   const data = props.flashcards;
@@ -14,10 +17,29 @@ function EnglishToLatinPage(props) {
   const [showAnswer, setShowAnswer] = useState(false);
   const [random, setRandom] = useState(Math.floor(Math.random() * list.length));
   const [isActive, setIsActive] = useState(false);
+  const [isRead, setIsRead] = useState(false);
+
+  const [loggedin, setLoggedIn] = useState(false);
+  const [id, setId] = useState(null);
+  const [userDetails, setUserDetails] = useState(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const user = await getUser();
+      if (user?.id) {
+        setLoggedIn(true);
+        setId(user.id);
+        setUserDetails(await getUserDetails(user.id));
+      }
+    }
+
+    fetchUser();
+  }, []);
 
   function handleAnswer() {
     setShowAnswer((prevAnswer) => !prevAnswer);
     setIsActive(prevValue => !prevValue);
+    setIsRead(true);
   }
 
   function handleShuffle() {
@@ -30,15 +52,22 @@ function EnglishToLatinPage(props) {
     setList((prevList) => {
         const newList = prevList.filter((element, index) => index !== random);
         setRandom(Math.floor(Math.random() * newList.length));
+
         if (setShowAnswer) setShowAnswer(false);
         if (isActive) setIsActive(false);
+
+        if (loggedin && isRead) {
+          updateFlashcardsRead(id);
+          setIsRead(false);
+        }
+
         return newList;
     })
   }
 
   return (
     <div className="flexbox">
-      <Verify />
+      {loggedin && userDetails && <Level name={userDetails.username} flashcardsRead={userDetails.flashcardsRead} flashcardsTested={userDetails.flashcardsTested}/>}
       {list.length > 0 ? (
         <button id="flashcard" className={isActive ? "active" : undefined} onClick={handleAnswer}>
           {showAnswer ? list[random].word : list[random].answer}
@@ -48,7 +77,7 @@ function EnglishToLatinPage(props) {
           All words revised! Reshuffle?
         </button>
       )}  
-
+  
       <div className="flexbox4">
         <button
           onClick={handleNext}

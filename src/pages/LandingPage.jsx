@@ -4,7 +4,7 @@ import SignupButton from "../components/SignupButton";
 import LoginButton from "../components/LoginButton";
 import Footer from "../components/Footer";
 import { useState, useEffect } from "react";
-import supabase from "../supabaseClient";
+import getUser from "../utils/getUser";
 import SignoutButton from "../components/SignoutButton";
 import Button from "../components/GeneralButton";
 
@@ -12,18 +12,14 @@ function LandingPage() {
   const [loggedin, setLoggedIn] = useState(false);
 
   useEffect(() => {
-    const getUser = async () => {
-      const { data, error } = await supabase.auth.getUser();
-
-      if (error) {
-        console.error(error.message);
-        return;
-      } else if (data) {
+    const fetchUser = async () => {
+      const user = await getUser();
+      if (user) {
         setLoggedIn(true);
       }
-    };
-    
-    getUser();
+    }
+
+    fetchUser();
   }, []);
 
   return (

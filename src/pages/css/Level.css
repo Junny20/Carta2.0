@@ -1,0 +1,53 @@
+.level-clean-badge {
+  position: fixed;
+  top: 1.5vh;
+  right: 1vw;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 12px 16px;
+  width: fit-content;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.level-clean-badge:hover {
+  transform: translateY(-2px);
+}
+
+.level-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.level-bar-wrapper {
+  background-color: #f0f0f0;
+  height: 6px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.level-bar-fill {
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  height: 100%;
+  width: 0%;
+  transition: width 0.3s ease-in-out;
+  border-radius: 4px;
+}
+
+.level-name {
+  color: #666;
+  padding-right: 10px;
+}
+
+.level-number {
+  color: #222;
+  font-weight: 600;
+}

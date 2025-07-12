@@ -4,61 +4,37 @@ import "./css/FlashcardPage.css";
 import BackButton from "../components/BackButton";
 import CustomiseButton from "../components/CustomiseButton";
 import Button from "../components/GeneralButton";
-import Verify from "../utils/verify";
-import supabase from "../supabaseClient";
+import updateFlashcardsRead from "../utils/UpdateFlashcardsRead";
+import getUser from "../utils/getUser";
+import getUserDetails from "../utils/getUserDetails";
+import Level from "../components/Level";
 
 function FlashcardPage(props) {
+  const data = props.flashcards;
   const location = useLocation();
   const path = location.pathname;
-  const data = props.flashcards;
 
   const [list, setList] = useState(data);
   const [showAnswer, setShowAnswer] = useState(false);
   const [random, setRandom] = useState(Math.floor(Math.random() * list.length));
   const [isActive, setIsActive] = useState(false);
   const [isRead, setIsRead] = useState(false);
+
   const [loggedin, setLoggedIn] = useState(false);
   const [id, setId] = useState(null);
-
-  const updateFlashcardsRead = async () => {
-    const { data: flashcardsReadData, error: fetchError } = await supabase
-      .from("users")
-      .select("flashcards_read")
-      .eq("id", id)
-      .single();
-
-    if (fetchError) {
-      console.error(fetchError.message);
-      return;
-    }
-
-    const flashcardsRead = flashcardsReadData.flashcards_read;
-
-    const { error: updateError } = await supabase
-      .from("users")
-      .update({ flashcards_read: flashcardsRead + 1 })
-      .eq("id", id);
-
-    if (updateError) {
-      console.error(updateError.message);
-      return;
-    }
-  };
+  const [userDetails, setUserDetails] = useState(null);
 
   useEffect(() => {
-    const getUser = async () => {
-      const { data, error } = await supabase.auth.getUser();
-
-      if (error) {
-        console.error(error.message);
-        return;
-      } else if (data) {
+    const fetchUser = async () => {
+      const user = await getUser();
+      if (user?.id) {
         setLoggedIn(true);
-        setId(data.user?.id);
+        setId(user.id);
+        setUserDetails(await getUserDetails(user.id));
       }
-    };
+    }
 
-    getUser();
+    fetchUser();
   }, []);
 
   function handleAnswer() {
@@ -66,11 +42,13 @@ function FlashcardPage(props) {
     setIsActive((prevValue) => !prevValue);
     setIsRead(true);
   }
+  
   function handleShuffle() {
     setList(data);
     setShowAnswer(false);
     setRandom(Math.floor(Math.random() * data.length));
   }
+
   function handleNext() {
     setList((prevList) => {
       const newList = prevList.filter((element, index) => index !== random);
@@ -80,7 +58,7 @@ function FlashcardPage(props) {
       if (isActive) setIsActive(false);
 
       if (loggedin && isRead) {
-        updateFlashcardsRead();
+        updateFlashcardsRead(id);
         setIsRead(false);
       }
 
@@ -90,7 +68,7 @@ function FlashcardPage(props) {
 
   return (
     <div className="flexbox">
-      <Verify />
+      {loggedin && userDetails && <Level name={userDetails.username} flashcardsRead={userDetails.flashcardsRead} flashcardsTested={userDetails.flashcardsTested}/>}
       <p className="hint fade">Click on card to reveal translation</p>
       {list.length > 0 ? (
         <button

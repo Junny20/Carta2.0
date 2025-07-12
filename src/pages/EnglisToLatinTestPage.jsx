@@ -1,23 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router";
 import "./css/FlashcardTestPage.css";
 import revision from "../data/revision";
 import CustomiseButton from "../components/CustomiseButton";
-import Verify from "../utils/verify";
 import Button from "../components/GeneralButton";
 import correct from "../assets/correct.wav";
 import wrong from "../assets/wrong.mp3";
+import getUser from "../utils/getUser";
+import updateFlashcardsTested from "../utils/UpdateFlashcardsTested";
+import getUserDetails from "../utils/getUserDetails";
+import Level from "../components/Level";
 
 function EnglishToLatinTestPage(props) {
+  const correctSoundRef = useRef(new Audio(correct));
+  const wrongSoundRef = useRef(new Audio(wrong));
+
+  useEffect(() => {
+    correctSoundRef.current.volume = 0.2;
+    wrongSoundRef.current.volume = 0.2;
+  }, []);
+
   const location = useLocation();
   const path = location.pathname;
   const goBack = path.slice(0, -5);
   const data = props.flashcards;
-
-  const correctSound = new Audio(correct);
-  correctSound.volume = 0.2;
-  const wrongSound = new Audio(wrong);
-  wrongSound.volume = 0.2;
 
   const [list, setList] = useState(data);
   const [isAnswered, setIsAnswered] = useState(false);
@@ -27,6 +33,23 @@ function EnglishToLatinTestPage(props) {
   const [right, setRight] = useState(0);
   const [total, setTotal] = useState(0);
   const [show, setShow] = useState(true);
+
+  const [loggedin, setLoggedIn] = useState(false);
+  const [id, setId] = useState(null);
+  const [userDetails, setUserDetails] = useState(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const user = await getUser();
+      if (user?.id) {
+        setLoggedIn(true);
+        setId(user.id);
+        setUserDetails(await getUserDetails(user.id));
+      }
+    }
+
+    fetchUser();
+  }, []);
 
   function handleRandom() {
     setIsAnswered(false);
@@ -63,6 +86,10 @@ function EnglishToLatinTestPage(props) {
     setIsAnswered(true);
     setTotal((prevValue) => prevValue + 1);
 
+    if (loggedin) {
+      updateFlashcardsTested(id);
+    }
+
     const yourAnswer = value.trim().toLowerCase();
     const correctAnswer = list[random].word;
     const correctWordList = [
@@ -88,10 +115,10 @@ function EnglishToLatinTestPage(props) {
     if (isCorrectAnswer) {
       setIsCorrect(true);
       setRight((prevValue) => prevValue + 1);
-      correctSound.play();
+      correctSoundRef.current.play();
     } else {
       setIsCorrect(false);
-      wrongSound.play();
+      wrongSoundRef.current.play();
     }
 
     setValue("");
@@ -110,7 +137,7 @@ function EnglishToLatinTestPage(props) {
 
   return (
     <div className="flashcardTestPage">
-      <Verify />
+      {loggedin && userDetails && <Level name={userDetails.username} flashcardsRead={userDetails.flashcardsRead} flashcardsTested={userDetails.flashcardsTested}/>}
       <h2 className={show ? "scoreRevealed": "scoreNotRevealed"}
         onClick={() => setShow((prevValue) => !prevValue)}
       >

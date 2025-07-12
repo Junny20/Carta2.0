@@ -6,22 +6,24 @@ import CustomiseButton from "../components/CustomiseButton";
 import Button from "../components/GeneralButton";
 import correct from "../assets/correct.wav";
 import wrong from "../assets/wrong.mp3";
-import Verify from "../utils/verify";
-import supabase from "../supabaseClient";
+import updateFlashcardsTested from "../utils/UpdateFlashcardsTested";
+import getUser from "../utils/getUser";
+import getUserDetails from "../utils/getUserDetails";
+import Level from "../components/Level";
 
 function FlashcardTestPage(props) {
   const correctSoundRef = useRef(new Audio(correct));
   const wrongSoundRef = useRef(new Audio(wrong));
 
-  const location = useLocation();
-  const path = location.pathname;
-  const goBack = path.slice(0, -5);
-  const data = props.flashcards;
-
   useEffect(() => {
     correctSoundRef.current.volume = 0.2;
     wrongSoundRef.current.volume = 0.2;
   }, []);
+
+  const location = useLocation();
+  const path = location.pathname;
+  const goBack = path.slice(0, -5);
+  const data = props.flashcards;
 
   const [list, setList] = useState(data);
   const [isAnswered, setIsAnswered] = useState(false);
@@ -34,40 +36,20 @@ function FlashcardTestPage(props) {
 
   const [loggedin, setLoggedIn] = useState(false);
   const [id, setId] = useState(null);
+  const [userDetails, setUserDetails] = useState(null);
 
   useEffect(() => {
-    const getUser = async () => {
-      const { data, error } = await supabase.auth.getUser();
-
-      if (error) {
-        console.error(error.message);
-        return;
-      } else if (data) {
+    const fetchUser = async () => {
+      const user = await getUser();
+      if (user?.id) {
         setLoggedIn(true);
-        setId(data.user?.id);
+        setId(user.id);
+        setUserDetails(await getUserDetails(user.id));
       }
-    };
+    }
 
-    getUser();
+    fetchUser();
   }, []);
-
-  const updateFlashcardsTested = async () => {
-    const {data: flashcardsTestedData, error: fetchError} = await supabase.from("users").select("flashcards_tested").eq("id", id).single();
-    
-    if (fetchError) {
-      console.error(fetchError.message);
-      return;
-    }
-
-    const flashcardsTested = flashcardsTestedData.flashcards_tested;
-
-    const { error: updateError } = await supabase.from("users").update({flashcards_tested: flashcardsTested + 1}).eq("id", id);
-
-    if (updateError) {
-      console.error(updateError.message);
-      return;
-    }
-  }
 
   function handleRandom() {
     setIsAnswered(false);
@@ -105,7 +87,7 @@ function FlashcardTestPage(props) {
     setTotal((prevValue) => prevValue + 1);
 
     if (loggedin) {
-      updateFlashcardsTested();
+      updateFlashcardsTested(id);
     }
 
     const yourAnswer = value.trim().toLowerCase();
@@ -154,7 +136,7 @@ function FlashcardTestPage(props) {
 
   return (
     <div className="flashcardTestPage">
-      <Verify />
+      {loggedin && userDetails && <Level name={userDetails.username} flashcardsRead={userDetails.flashcardsRead} flashcardsTested={userDetails.flashcardsTested}/>}
       <h2 className={show ? "scoreRevealed": "scoreNotRevealed"}
         onClick={() => setShow((prevValue) => !prevValue)}
       >
