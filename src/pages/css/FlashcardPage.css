@@ -38,7 +38,7 @@
   color: white;
   border: none;
   padding: 10px 20px;
-  font-size: 1rem;
+  font-size: 0.8rem;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.2s ease;
@@ -49,7 +49,7 @@
 }
 
 .flexbox3 button {
-  margin: 5px;
+  margin: 3px;
 }
 
 .hint {

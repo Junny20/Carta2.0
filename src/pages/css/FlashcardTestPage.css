@@ -45,7 +45,7 @@
   color: white;
   border: none;
   padding: 10px 20px;
-  font-size: 1rem;
+  font-size: 0.8rem;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.2s ease;
@@ -59,7 +59,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: 3px;
 }
 
 #answer {

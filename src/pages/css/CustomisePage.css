@@ -18,7 +18,7 @@
 
 .customisePageGrid {
   display: grid;
-  width: 550px;
+  width: 450px;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
@@ -30,9 +30,9 @@
 .customisePage button {
   background-color: #26a69a; 
   color: white;
-  width: 250px;
-  height: 40px;
-  font-size: 0.85rem;
+  width: 220px;
+  height: 35px;
+  font-size: 0.8rem;
   font-weight: 500;
   border: 2px solid #26a69a;
   border-radius: 6px;
