@@ -9,10 +9,11 @@ import wrong from "../assets/wrong.mp3";
 import Level from "../components/Level";
 import { useAuth } from "../authContext";
 import updateFlashcardsTested from "../utils/updateFlashcardsTested";
+import getCorrectAnswers from "../utils/getCorrectAnswers";
 
 function FlashcardTestPage(props) {
   const { user, setUser, loading } = useAuth();
-  
+
   const correctSoundRef = useRef(new Audio(correct));
   const wrongSoundRef = useRef(new Audio(wrong));
 
@@ -75,28 +76,15 @@ function FlashcardTestPage(props) {
     if (loggedin) {
       setUser({
         ...user,
-        flashcards_tested: user.flashcards_tested + 1
-      })
+        flashcards_tested: user.flashcards_tested + 1,
+      });
       updateFlashcardsTested(user.id);
     }
 
     const yourAnswer = value.trim().toLowerCase();
     const correctAnswer = list[random].answer;
-    const correctWordList = correctAnswer
-      .split(",")
-      .map((element) => element.trim().toLowerCase());
+    const finalCorrectWordList = getCorrectAnswers(correctAnswer);
 
-    const finalCorrectWordList = correctWordList.map((element) => {
-      if (element.includes("(") && element.includes(")")) {
-        const index = element.indexOf("(");
-        return element.slice(0, index).trim();
-      } else {
-        return element;
-      }
-    });
-
-    //remove later
-    console.log(finalCorrectWordList);
     const isCorrectAnswer = finalCorrectWordList.some(
       (element) => element === yourAnswer
     );
@@ -120,14 +108,21 @@ function FlashcardTestPage(props) {
 
   function handleKeyDown(event) {
     if (event.key === "Enter") {
-        handleSubmit();
+      handleSubmit();
     }
   }
 
   return (
     <div className="flashcardTestPage">
-      {loggedin && <Level name={user.username} flashcardsRead={user.flashcards_read} flashcardsTested={user.flashcards_tested}/>}
-      <h2 className={show ? "scoreRevealed": "scoreNotRevealed"}
+      {loggedin && (
+        <Level
+          name={user.username}
+          flashcardsRead={user.flashcards_read}
+          flashcardsTested={user.flashcards_tested}
+        />
+      )}
+      <h2
+        className={show ? "scoreRevealed" : "scoreNotRevealed"}
         onClick={() => setShow((prevValue) => !prevValue)}
       >
         {show ? "Click to show score" : `Score: ${right}/${total}`}

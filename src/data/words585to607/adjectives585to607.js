@@ -15,7 +15,7 @@ const adjectives = [
   { word: "cavus, cava, cavum", answer: "hollow" },
   { word: "niger, nigra, nigrum", answer: "black, dark" },
   { word: "vetus, veteris", answer: "old, ancient" },
-  { word: "quadrupedans, (gen.), quadrupedantis", answer: "galloping" },
+  { word: "quadrupedans, quadrupedantis", answer: "galloping" },
   { word: "celsus, celsa, celsum", answer: "high, lofty" },
   { word: "latus, lata, latum", answer: "broad, wide" },
   { word: "lectus, lecta, lectum", answer: "chosen, picked" },

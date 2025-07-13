@@ -9,6 +9,7 @@ import wrong from "../assets/wrong.mp3";
 import Level from "../components/Level";
 import { useAuth } from "../authContext";
 import updateFlashcardsTested from "../utils/updateFlashcardsTested";
+import getCorrectAnswers from "../utils/getCorrectAnswers";
 
 
 function EnglishToLatinTestPage(props) {
@@ -80,21 +81,8 @@ function EnglishToLatinTestPage(props) {
 
     const yourAnswer = value.trim().toLowerCase();
     const correctAnswer = list[random].word;
-    const correctWordList = [
-      ...correctAnswer
-        .split(",")
-        .map((element) => element.trim().toLowerCase()),
-      correctAnswer,
-    ];
-
-    const finalCorrectWordList = correctWordList.map((element) => {
-      if (element.includes("(") && element.includes(")")) {
-        const index = element.indexOf("(");
-        return element.slice(0, index).trim();
-      } else {
-        return element;
-      }
-    });
+    const finalCorrectWordList = getCorrectAnswers(correctAnswer);
+    console.log(finalCorrectWordList);
 
     const isCorrectAnswer = finalCorrectWordList.some(
       (element) => element === yourAnswer
