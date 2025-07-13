@@ -31,7 +31,7 @@ function LoginPage() {
     }
 
     return (
-        <>  
+        <div className="login-container">  
             <h1>Salve Iterum!</h1>
             <form onSubmit={handleSubmit}>
                 <Input type="email" onChange={setEmail} name="email" placeholder="Email..." value={email}/>
@@ -44,9 +44,7 @@ function LoginPage() {
                 <Button buttonText="New user? Sign up!" path="/signup" />
                 <BackButton/>
             </div>
-            
-            
-        </>
+        </div>
     )
 }
 

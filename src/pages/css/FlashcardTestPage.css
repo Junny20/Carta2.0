@@ -68,14 +68,14 @@
   width: 48vw;
   height: 40px;
   font-size: 1rem;
-  border: 1.5px solid #ccc;
   border-radius: 6px;
+  border: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   transition: border-color 0.3s ease;
 }
 
 #answer:focus {
   outline: none;
-  border-color: #219ebc;
 }
 
 .scoreRevealed,
@@ -84,7 +84,7 @@
   font-weight: 600;
   color: #444;
   cursor: pointer;
-  padding-bottom: 6px;
+  margin: 0;
 }
 
 .scoreRevealed {
@@ -125,6 +125,10 @@
   .flexbox4 {
     display: flex;
     flex-direction: column;
+  }
+
+  .scoreRevealed, .scoreNotRevealed {
+    margin-top: 100px;
   }
 }
 
