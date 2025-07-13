@@ -8,7 +8,7 @@ function SignupButton() {
     }
 
     return (
-        <button onClick={handleSignUp}>Sign Up</button>
+        <button onClick={handleSignUp}>Sign Up!</button>
     )
 }
 
