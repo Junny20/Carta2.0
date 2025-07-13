@@ -4,11 +4,7 @@ function SignoutButton() {
     const handleClick = async () => {
         const { error } = await supabase.auth.signOut();
 
-        if (error) {
-            console.error(error.message);
-        } else {
-            window.location.href = "/";
-        }
+        window.location.href = "/"
     }
 
     return (
