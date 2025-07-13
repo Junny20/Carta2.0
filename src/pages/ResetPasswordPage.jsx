@@ -41,7 +41,7 @@ function ResetPasswordPage() {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <p style = {{fontSize: "32px", fontWeight: 500, color: "#00796b", paddingBottom: "30px"}}>ad renovandum</p>
+        <p style = {{fontSize: "32px", fontWeight: 500, color: "#00796b"}}>ad renovandum</p>
         <Input type="password" onChange={setPassword} name="password" placeholder="Password..." value={password}/>
         <Input type="password" onChange={setConfirmPassword} name="confirmPassword" placeholder="Confirm password..." value={confirmPassword}/>
         <button type="submit">Submit</button>
