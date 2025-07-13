@@ -18,8 +18,7 @@ function ForgotPasswordPage() {
     setMessage("Loading...")
 
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      //change on deploy
-      redirectTo: "http://localhost:5173/reset-password"
+      redirectTo: "http://carta.run/reset-password"
     });
 
     if (error) {

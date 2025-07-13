@@ -46,8 +46,8 @@ function Signup() {
                 } else {
                     setMessage("Signed up successfully! You should get a verification email. Once verified, you can login.")
                     setTimeout(() => {
-                        navigate("/");
-                    }, 5000);
+                        navigate("/")
+                    }, 3000);
                 }
             }
         }
