@@ -1,5 +1,4 @@
 .flexbox {
-  background-color: #f0f4ef; 
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -7,7 +6,7 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
-  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-family: "Segoe UI", Tahoma, sans-serif;
 }
 
 #flashcard,
@@ -25,14 +24,13 @@
 }
 
 #flashcard.active {
-  background-color: #8ecae6; 
+  background-color: #8ecae6;
   color: #fff;
   border-color: #219ebc;
 }
 
 .flexbox3 {
   display: flex;
-  flex-direction: row;
 }
 
 .flexbox button {
@@ -66,5 +64,35 @@
 @keyframes fadeOut {
   to {
     opacity: 0;
+  }
+}
+
+@media (max-width: 1000px) {
+  #flashcard,
+  #done {
+    width: 70vw;
+  }
+}
+
+@media (max-width: 700px) {
+  .hint {
+    font-size: 1rem;
+  }
+
+  #flashcard,
+  #done {
+    width: 80vw;
+    font-size: 1.25rem;
+  }
+
+  .flexbox3 {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 500px) {
+  #flashcard, #done {
+    height: 35vh;
   }
 }

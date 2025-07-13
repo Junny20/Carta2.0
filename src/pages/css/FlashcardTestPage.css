@@ -1,5 +1,4 @@
 .flashcardTestPage {
-  background-color: #f0f4ef; 
   display: flex;
   height: 100vh;
   width: 100vw;
@@ -58,7 +57,6 @@
 
 .flexbox4 {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 8px;
@@ -96,5 +94,42 @@
 @keyframes fadeOut {
   to {
     opacity: 0;
+  }
+}
+
+@media (max-width: 1000px) {
+  #flashcardTest,
+  #done {
+    width: 70vw;
+  }
+
+  #answer {
+    width: 65vw;
+  }
+}
+
+@media (max-width: 750px) {
+  .hint {
+    font-size: 1rem;
+  }
+  #flashcardTest,
+  #done {
+    width: 80vw;
+    font-size: 1.25rem;
+  }
+
+  #answer {
+    width: 75vw;
+  }
+
+  .flexbox4 {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 500px) {
+  #flashcardTest, #done {
+    height: 35vh;
   }
 }
