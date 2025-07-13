@@ -23,9 +23,6 @@ function LoginPage() {
         if (error) {
             setMessage(error.message);
             console.log(error.message);
-            if (error.message === "Invalid login credentials") {
-                setShowResetPassword(true);
-            }
         } else if (data?.user) {
             console.log(data);
             setMessage("Successfully logged in!");
@@ -40,7 +37,7 @@ function LoginPage() {
                 <Input type="email" onChange={setEmail} name="email" placeholder="Email..." value={email}/>
                 <Input type="password" onChange={setPassword} name="password" placeholder="Password..." value={password}/>
                 <button type="submit">Submit</button>
-                <p>{message}</p>
+                <p style={{fontSize: "14px", fontWeight: 400, color: "#00796b"}}>{message}</p>
                 <a href="/update-password">Forgotten password?</a> 
             </form>
             <div id="signup">
