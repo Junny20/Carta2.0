@@ -1,15 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useLocation } from "react-router";
 import "./css/FlashcardPage.css";
 import BackButton from "../components/BackButton";
 import CustomiseButton from "../components/CustomiseButton";
 import Button from "../components/GeneralButton";
-import updateFlashcardsRead from "../utils/UpdateFlashcardsRead";
-import getUser from "../utils/getUser";
-import getUserDetails from "../utils/getUserDetails";
 import Level from "../components/Level";
+import { useAuth } from "../authContext";
+import updateFlashcardsRead from "../utils/updateFlashcardsRead";
 
 function FlashcardPage(props) {
+  const { user, setUser, loading } = useAuth();
+
   const data = props.flashcards;
   const location = useLocation();
   const path = location.pathname;
@@ -20,29 +21,14 @@ function FlashcardPage(props) {
   const [isActive, setIsActive] = useState(false);
   const [isRead, setIsRead] = useState(false);
 
-  const [loggedin, setLoggedIn] = useState(false);
-  const [id, setId] = useState(null);
-  const [userDetails, setUserDetails] = useState(null);
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      const user = await getUser();
-      if (user?.id) {
-        setLoggedIn(true);
-        setId(user.id);
-        setUserDetails(await getUserDetails(user.id));
-      }
-    }
-
-    fetchUser();
-  }, []);
+  const loggedin = !!user;
 
   function handleAnswer() {
     setShowAnswer((prevAnswer) => !prevAnswer);
     setIsActive((prevValue) => !prevValue);
     setIsRead(true);
   }
-  
+
   function handleShuffle() {
     setList(data);
     setShowAnswer(false);
@@ -58,7 +44,11 @@ function FlashcardPage(props) {
       if (isActive) setIsActive(false);
 
       if (loggedin && isRead) {
-        updateFlashcardsRead(id);
+        setUser({
+          ...user,
+          flashcards_read: user.flashcards_read + 1,
+        });
+        updateFlashcardsRead(user.id);
         setIsRead(false);
       }
 
@@ -68,7 +58,13 @@ function FlashcardPage(props) {
 
   return (
     <div className="flexbox">
-      {loggedin && userDetails && <Level name={userDetails.username} flashcardsRead={userDetails.flashcardsRead} flashcardsTested={userDetails.flashcardsTested}/>}
+      {loggedin && (
+        <Level
+          name={user.username}
+          flashcardsRead={user.flashcards_read}
+          flashcardsTested={user.flashcards_tested}
+        />
+      )}
       <p className="hint fade">Click on card to reveal translation</p>
       {list.length > 0 ? (
         <button

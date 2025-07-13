@@ -1,14 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useLocation } from "react-router";
 import "./css/FlashcardPage.css";
 import Button from "../components/GeneralButton";
 import CustomiseButton from "../components/CustomiseButton";
-import updateFlashcardsRead from "../utils/UpdateFlashcardsRead";
-import getUser from "../utils/getUser";
-import getUserDetails from "../utils/getUserDetails";
 import Level from "../components/Level";
+import { useAuth } from "../authContext";
+import updateFlashcardsRead from "../utils/updateFlashcardsRead";
 
 function EnglishToLatinPage(props) {
+  const { user, setUser, loading } = useAuth();
+
   const data = props.flashcards;
   const location = useLocation();
   const path = location.pathname;
@@ -19,22 +20,7 @@ function EnglishToLatinPage(props) {
   const [isActive, setIsActive] = useState(false);
   const [isRead, setIsRead] = useState(false);
 
-  const [loggedin, setLoggedIn] = useState(false);
-  const [id, setId] = useState(null);
-  const [userDetails, setUserDetails] = useState(null);
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      const user = await getUser();
-      if (user?.id) {
-        setLoggedIn(true);
-        setId(user.id);
-        setUserDetails(await getUserDetails(user.id));
-      }
-    }
-
-    fetchUser();
-  }, []);
+  const loggedin = !!user;
 
   function handleAnswer() {
     setShowAnswer((prevAnswer) => !prevAnswer);
@@ -57,7 +43,11 @@ function EnglishToLatinPage(props) {
         if (isActive) setIsActive(false);
 
         if (loggedin && isRead) {
-          updateFlashcardsRead(id);
+          setUser({
+            ...user,
+            flashcards_read: user.flashcards_read + 1
+          })
+          updateFlashcardsRead(user.id);
           setIsRead(false);
         }
 
@@ -67,7 +57,7 @@ function EnglishToLatinPage(props) {
 
   return (
     <div className="flexbox">
-      {loggedin && userDetails && <Level name={userDetails.username} flashcardsRead={userDetails.flashcardsRead} flashcardsTested={userDetails.flashcardsTested}/>}
+      {loggedin && <Level name={user.username} flashcardsRead={user.flashcards_read} flashcardsTested={user.flashcards_tested}/>}
       {list.length > 0 ? (
         <button id="flashcard" className={isActive ? "active" : undefined} onClick={handleAnswer}>
           {showAnswer ? list[random].word : list[random].answer}

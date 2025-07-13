@@ -6,12 +6,13 @@ import CustomiseButton from "../components/CustomiseButton";
 import Button from "../components/GeneralButton";
 import correct from "../assets/correct.wav";
 import wrong from "../assets/wrong.mp3";
-import updateFlashcardsTested from "../utils/UpdateFlashcardsTested";
-import getUser from "../utils/getUser";
-import getUserDetails from "../utils/getUserDetails";
 import Level from "../components/Level";
+import { useAuth } from "../authContext";
+import updateFlashcardsTested from "../utils/updateFlashcardsTested";
 
 function FlashcardTestPage(props) {
+  const { user, setUser, loading } = useAuth();
+  
   const correctSoundRef = useRef(new Audio(correct));
   const wrongSoundRef = useRef(new Audio(wrong));
 
@@ -34,22 +35,7 @@ function FlashcardTestPage(props) {
   const [total, setTotal] = useState(0);
   const [show, setShow] = useState(true);
 
-  const [loggedin, setLoggedIn] = useState(false);
-  const [id, setId] = useState(null);
-  const [userDetails, setUserDetails] = useState(null);
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      const user = await getUser();
-      if (user?.id) {
-        setLoggedIn(true);
-        setId(user.id);
-        setUserDetails(await getUserDetails(user.id));
-      }
-    }
-
-    fetchUser();
-  }, []);
+  const loggedin = !!user;
 
   function handleRandom() {
     setIsAnswered(false);
@@ -87,7 +73,11 @@ function FlashcardTestPage(props) {
     setTotal((prevValue) => prevValue + 1);
 
     if (loggedin) {
-      updateFlashcardsTested(id);
+      setUser({
+        ...user,
+        flashcards_tested: user.flashcards_tested + 1
+      })
+      updateFlashcardsTested(user.id);
     }
 
     const yourAnswer = value.trim().toLowerCase();
@@ -136,7 +126,7 @@ function FlashcardTestPage(props) {
 
   return (
     <div className="flashcardTestPage">
-      {loggedin && userDetails && <Level name={userDetails.username} flashcardsRead={userDetails.flashcardsRead} flashcardsTested={userDetails.flashcardsTested}/>}
+      {loggedin && <Level name={user.username} flashcardsRead={user.flashcards_read} flashcardsTested={user.flashcards_tested}/>}
       <h2 className={show ? "scoreRevealed": "scoreNotRevealed"}
         onClick={() => setShow((prevValue) => !prevValue)}
       >

@@ -3,24 +3,16 @@ import ContinueButton from "../components/ContinueButton";
 import SignupButton from "../components/SignupButton";
 import LoginButton from "../components/LoginButton";
 import Footer from "../components/Footer";
-import { useState, useEffect } from "react";
-import getUser from "../utils/getUser";
 import SignoutButton from "../components/SignoutButton";
 import Button from "../components/GeneralButton";
+import { useAuth } from "../authContext";
 
 function LandingPage() {
-  const [loggedin, setLoggedIn] = useState(false);
+  const { user, loading } = useAuth();
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      const user = await getUser();
-      if (user) {
-        setLoggedIn(true);
-      }
-    }
+  const loggedin = !!user;
 
-    fetchUser();
-  }, []);
+  if (loading) {return <p>Loading...</p>}
 
   return (
     <>
