@@ -5,10 +5,15 @@ import CustomiseButton from "../components/CustomiseButton";
 import Button from "../components/GeneralButton";
 import correct from "../assets/correct.wav";
 import wrong from "../assets/wrong.mp3";
+import { useAuth } from "../authContext";
+import Level from "../components/Level";
+import getCorrectAnswers from "../utils/getCorrectAnswers";
+import updateFlashcardsTested from "../utils/updateFlashcardsTested";
 
 function RevisionTestPage() {
-  const revisionData = revision;
+  const { user, setUser, loading } = useAuth();
 
+  const revisionData = revision;
   const [list, setList] = useState(revisionData);
   const [isAnswered, setIsAnswered] = useState(false);
   const [random, setRandom] = useState(Math.floor(Math.random() * list.length));
@@ -17,6 +22,8 @@ function RevisionTestPage() {
   const [right, setRight] = useState(0);
   const [total, setTotal] = useState(0);
   const [show, setShow] = useState(true);
+
+  const loggedin = !!user;
 
   const correctSound = new Audio(correct);
   correctSound.volume = 0.2;
@@ -51,22 +58,18 @@ function RevisionTestPage() {
     setIsAnswered(true);
     setTotal((prevValue) => prevValue + 1);
 
+    if (loggedin) {
+      setUser({
+        ...user,
+        flashcards_tested: user.flashcards_tested + 1
+      })
+      updateFlashcardsTested(user.id);
+    }
+
     const yourAnswer = value.trim().toLowerCase();
     const correctAnswer = list[random].answer;
-    const correctWordList = correctAnswer
-      .split(",")
-      .map((element) => element.trim().toLowerCase());
+    const finalCorrectWordList = getCorrectAnswers(correctAnswer);
 
-    const finalCorrectWordList = correctWordList.map((element) => {
-      if (element.includes("(") && element.includes(")")) {
-        const index = element.indexOf("(");
-        return element.slice(0, index).trim();
-      } else {
-        return element;
-      }
-    });
-
-    console.log(finalCorrectWordList);
     const isCorrectAnswer = finalCorrectWordList.some(
       (element) => element === yourAnswer
     );
@@ -89,12 +92,9 @@ function RevisionTestPage() {
     }
   }
 
-  function handleKey(event) {
-    console.log(event);
-  }
-
   return (
     <div className="flashcardTestPage">
+      {loggedin && <Level name={user.username} flashcardsRead={user.flashcards_read} flashcardsTested={user.flashcards_tested} />}
       <h2 className={show ? "scoreRevealed": "scoreNotRevealed"}
         onClick={() => setShow((prevValue) => !prevValue)}
       >

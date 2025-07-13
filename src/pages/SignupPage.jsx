@@ -17,7 +17,7 @@ function Signup() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setMessage("Loading..."); 
-        console.log(username, email, password, confirmPassword);
+
         if (password !== confirmPassword) {
             setMessage("Passwords don't match.")
             setPassword("");
@@ -35,7 +35,6 @@ function Signup() {
                     id: data.user.id,
                     username: username,
                     email: email,
-                    level: 1,
                     flashcards_read: 0,
                     flashcards_tested: 0,
                     created_at: date

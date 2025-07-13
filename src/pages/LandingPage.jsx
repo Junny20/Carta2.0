@@ -12,7 +12,7 @@ function LandingPage() {
 
   const loggedin = !!user;
 
-  if (loading) {return <p>Loading...</p>}
+  if (loading) {return <p style={{ color: "#0c7569", fontWeight: 500, fontSize: "32px" }}>Loading...</p>}
 
   return (
     <>

@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router";
 import "../pages/css/Level.css";
 
-function Level({ name, flashcardsRead, flashcardsTested, baseXp = 100 }) {
+function Level({ name, flashcardsRead, flashcardsTested }) {
   const navigate = useNavigate();
+  const baseXp = 100
   const totalXp = flashcardsRead * 5 + flashcardsTested * 10;
   let level = 0;
 
